@@ -1,0 +1,17 @@
+tom:
+  name: Tom Jaeger
+  title: Owner @ Packet Tide
+  url: https://packettide.com
+  image_url: https://github.com/tomjaeger.png
+
+andy:
+  name: Andy McCormick
+  title: Project Management @ Packet Tide
+  url: https://packettide.com
+  image_url: https://github.com/ops-andy.png
+
+bryan:
+  name: Bryan Nielsen
+  title: Developer @ Packet Tide
+  url: https://packettide.com
+  image_url: https://github.com/bryannielsen.png

@@ -1,0 +1,141 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Templates
+
+A big part of why Coilpack was created is to allow you to express your content through multiple templating engines.  We currently support two powerful and popular options: [Twig](https://twig.symfony.com/) and [Blade](https://laravel.com/docs/9.x/blade#introduction).
+
+## Twig and Blade in ExpressionEngine
+
+~~To use Twig or Blade within an ExpressionEngine template you will need to add a comment to the beginning of the template.  This applies whether you manage the template through the control panel Template Manager or on the filesystem with a text editor.~~
+
+~~For Twig you would start your template with `{!-- template:twig --}` and Blade would start with `{!-- template:blade --}`.  These comments will be removed before the content is rendered.~~
+
+In ExpressionEngine 7.2.3+ you can now just create a regular template file and add the suffix `.twig` or `.blade` to the file.  For example you might want to create a `blog` listing that is rendered with Twig.  You would do this by creating a file at `user/templates/blog.group/index.html.twig`.  When a template is created this way you do not need the comment at the beginning.
+
+[Learn more about using Twig in ExpressionEngine from our guide](./guides/twig.md).
+
+## Twig and Blade in Laravel
+
+If you manage your templates inside your Laravel application you will just need to create files in your `resources/views` folder with either a `.twig` or a `.blade.php` extension and include them with the `view()` helper.  The Laravel documentation is a great resource for [learning more about views](https://laravel.com/docs/9.x/views#introduction).
+
+## Using ExpressionEngine Tags
+
+Coilpack aims to maintain a familiar syntax with native ExpressionEngine templates in both Twig and Blade.  Here is a simple example of how a module tag would be rendered in each of the available template engines.
+
+<Tabs>
+<TabItem value="native" label="Native">
+
+```php
+{exp:module_name:tag_name parameter_1="value_1"}
+```
+
+</TabItem>
+<TabItem value="twig" label="Twig">
+
+```php
+{{ exp.module_name.tag_name.parameter_1('value_1') }}
+```
+
+</TabItem>
+<TabItem value="blade" label="Blade">
+
+```php
+{{ $exp->module_name->tag_name->parameter_1('value_1') }}
+```
+
+</TabItem>
+</Tabs>
+
+
+### Channel Entries
+
+In ExpressionEngine much of our content is retrieved through the Channel Entries Tag which is a tag pair that would be used like this in a template:
+
+
+<Tabs>
+<TabItem value="native" label="Native">
+
+```php
+{exp:channel:entries channel="blog"}
+    <h1>{title}</h1>
+    <div>
+        {page_content}
+    </div>
+    {if no_results}
+        <span>No blog entries</span>
+    {/if}
+{/exp:channel:entries}
+```
+
+</TabItem>
+<TabItem value="twig" label="Twig">
+
+```php
+{% for entry in exp.channel.entries.channel('blog') %}
+    <h1>{{ entry.title }}</h1>
+    <div>
+        {{ entry.page_content }}
+    </div>
+{% else %}
+    <span>No blog entries</span>
+{% endfor %}
+```
+
+</TabItem>
+<TabItem value="blade" label="Blade">
+
+```php
+@forelse($exp->channel->entries->channel('blog') as $entry)
+    <h1>{{ $entry->title }}</h1>
+    <div>
+        {{ $entry->page_content }}
+    </div>
+@empty
+    <span>No blog entries</span>
+@endforelse
+```
+
+</TabItem>
+</Tabs>
+
+
+## Referencing other templates from inside Twig and Blade
+
+Both and Twig and Blade provide methods for including other template files.  When you do this with files inside your `user/templates` folder you will need to include the `ee::` namespace in the path.  For instance if we want to include a partial inside a Twig view we would write `{% include('ee::folder._partial') %}`
+
+## Global Variables
+
+All of the regular ExpressionEngine global variables are available to you inside Twig and Blade views.  A few small adjustments are necessary though to work with the new templating engines.  Here is an example of how global variables are prefixed and are accessed differently in Twig and Blade:
+
+<Tabs>
+<TabItem value="native" label="Native">
+
+```php
+{structure:parent:id}
+```
+
+</TabItem>
+<TabItem value="twig" label="Twig">
+
+```php
+{{ global.structure.parent.id }}
+```
+
+</TabItem>
+<TabItem value="blade" label="Blade">
+
+```php
+{{ $global->structure->parent->id }}
+```
+
+</TabItem>
+</Tabs>
+
+## Example Usage
+
+We have provided the default ExpressionEngine theme converted into Twig and Blade as a point of reference.  You can view these files in your `vendor/expressionengine/coilpack/resources/views` folder.
+
+## Add-on Developers
+
+If you are an ExpressionEngine Add-on developer looking to understand more about how Coilpack handles template tags in Twig and Blade please read our [Add-ons Documentations](./advanced/addons.md).

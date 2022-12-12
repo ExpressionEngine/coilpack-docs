@@ -1,0 +1,247 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+
+# Channel Entries
+
+The Channel Entries tag returns an Eloquent Collection of ChannelEntry models. You may also use any Eloquent query builder methods on this tag.
+
+## Example Usage
+
+<Tabs groupId="templating-engines">
+<TabItem value="native" label="Native">
+
+```php
+{exp:channel:entries}
+    {title}
+{/exp:channel:entries}
+```
+
+</TabItem>
+<TabItem value="twig" label="Twig">
+
+```php
+{% for entry in exp.channel.entries %}
+    {{ entry.title }}
+{% endfor %}
+```
+
+</TabItem>
+<TabItem value="blade" label="Blade">
+
+```php
+@foreach($exp->channel->entries as $entry)
+    {{ $entry->title }}
+@endforeach
+```
+
+</TabItem>
+</Tabs>
+
+
+## Parameters
+
+
+
+### Category ID
+
+Categories are specified by ID number (the ID number of each category is displayed in the Control Panel). The reason we use the ID is because categories can be called anything (with spaces, quotes, etc.), and also renamed. It would be much more difficult to have to update the tag parameters every time you updated a category name. Further, you can have multiple categories with the same name either in different Category Groups or in different parts of the hierarchy within the same Category Group.
+
+And as with some of the other parameters, you can stack categories to get entries with any of those categories
+
+
+<Tabs groupId="templating-engines">
+<TabItem value="native" label="Native">
+
+```php
+exp:channel:entries category_id='2|45|4|9'
+```
+
+</TabItem>
+<TabItem value="twig" label="Twig">
+
+```php
+exp.channel.entries.category_id('2|45|4|9')
+```
+
+</TabItem>
+<TabItem value="blade" label="Blade">
+
+```php
+$exp->channel->entries->category_id('2|45|4|9')
+```
+
+</TabItem>
+</Tabs>
+
+
+Or use “not” to exclude categories
+
+<Tabs groupId="templating-engines">
+<TabItem value="native" label="Native">
+
+```php
+exp:channel:entries category_id='not 4|5|7'
+```
+
+</TabItem>
+<TabItem value="twig" label="Twig">
+
+```php
+exp.channel.entries.category_id('not 4|5|7')
+```
+
+</TabItem>
+<TabItem value="blade" label="Blade">
+
+```php
+$exp->channel->entries->category_id('not 4|5|7')
+```
+
+</TabItem>
+</Tabs>
+
+
+
+### Channel
+
+Choose which channel to show the entries (will show all channels if no channel is specified).
+
+<Tabs groupId="templating-engines">
+<TabItem value="native" label="Native">
+
+```php
+exp:channel:entries channel='blog'
+```
+
+</TabItem>
+<TabItem value="twig" label="Twig">
+
+```php
+exp.channel.entries.channel('blog')
+```
+
+</TabItem>
+<TabItem value="blade" label="Blade">
+
+```php
+exp->channel->entries->channel('blog')
+```
+
+</TabItem>
+</Tabs>
+
+
+Additionally, you can use the pipe character to separate multiple channels:
+
+<Tabs groupId="templating-engines">
+<TabItem value="native" label="Native">
+
+```php
+exp:channel:entries channel='channel1|channel2|channel3'
+```
+
+</TabItem>
+<TabItem value="twig" label="Twig">
+
+```php
+exp.channel.entries.channel('channel1|channel2|channel3')
+```
+
+</TabItem>
+<TabItem value="blade" label="Blade">
+
+```php
+exp->channel->entries->channel('channel1|channel2|channel3')
+```
+
+</TabItem>
+</Tabs>
+
+Or you can add the word "not" (with a space after it) to exclude channels:
+
+<Tabs groupId="templating-engines">
+<TabItem value="native" label="Native">
+
+```php
+exp:channel:entries channel='not channel1|channel2|channel3'
+```
+
+</TabItem>
+<TabItem value="twig" label="Twig">
+
+```php
+exp.channel.entries.channel('not channel1|channel2|channel3')
+```
+
+</TabItem>
+<TabItem value="blade" label="Blade">
+
+```php
+exp->channel->entries->channel('not channel1|channel2|channel3')
+```
+
+</TabItem>
+</Tabs>
+
+### Dynamic
+
+The channel display engine sets some parameters dynamically, based on what is in the URL. There are times, however, where you do not want the parameters affected by what the URL contains.
+
+This is often useful if you want to list entries in a “sidebar” on your site and have them always be the same ones regardless of which page on your site you visit (main page, archives, comments, etc.). By setting dynamic="no" you will ensure that the list is not affected by anything passed in the URL.
+
+```php
+exp.channel.entries.dynamic()
+```
+
+### Entry ID
+
+You can hard code the channel tag to show a specific channel entry.
+
+```php
+exp.channel.entries.entry_id('147')
+```
+
+You may also specify multiple entries by separating them with the pipe character:
+
+```php
+exp.channel.entries.entry_id('13|42|147')
+```
+
+Or use "not" to exclude entries::
+
+```php
+exp.channel.entries.entry_id('not 45|534|807')
+```
+
+### Fixed Order
+
+You can hard code the channel entries tag to show entries in a specific order based on their entry ids. Entries will be displayed in the order specified in the pipe delimited list. In the example below, the three entries with id’s 3, 7, and 1 would be displayed in that order.
+
+```php
+exp.channel.entries.fixed_order('3|7|1')
+```
+
+### URL Title
+
+This parameter limits the query by an entry’s url_title. You can use the pipe character to query by multiple url_titles:
+
+```php
+exp.channel.entries.url_title('my_wedding|my_honeymoon|my_kids')
+```
+
+Or you can add “not” to exclude url_titles:
+
+```php
+exp.channel.entries.url_title('not my_in_laws')
+```
+
+
+
+### Limit
+
+This parameter limits the number of entries on any given page. The limit will default to all entries if a value is not specified.
+
+```php
+exp.channel.entries.limit(5)
+```

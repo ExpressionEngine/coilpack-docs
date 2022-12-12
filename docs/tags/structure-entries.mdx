@@ -1,0 +1,19 @@
+# Structure Entries
+
+The Structure Entries tag returns an Eloquent Collection of ChannelEntry models. You may also use any Eloquent query builder methods on this tag.
+
+## Example
+
+```php
+exp.structure.entries
+```
+
+## Parameters
+
+### Parent ID
+
+Determine which children to show within the entries tag. A value of 0 will show the top level.
+
+```php
+exp.structure.entries.parent_id(5)
+```
