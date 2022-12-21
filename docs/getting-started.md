@@ -14,6 +14,8 @@ For Example, if you have a current ExpressionEngine site located at `https://ama
 
 For the sake of SEO, current links in place, etc, once you decide to use Coilpack for your website, you will probably want to update your webserver to point your site's current URL to your Laravel project. Talk to your webserver admin for information on how to accomplish this.
 
+**Tip:** Read more about how URLs are handled inside of Coilpack in the [Routing Section](/routing)
+
 
 ## Selecting a Laravel Version
 
