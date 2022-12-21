@@ -28,7 +28,7 @@ composer require expressionengine/coilpack
 
 **Run Coilpack Setup**
 
-During the setup process you may choose to install a new copy of ExpressionEngine or point Coilpack to the path of an existing installation.  Please note that ExpressionEngine 7 is required so if you would like to install Coilpack with an existing site you may need to upgrade first.
+During the setup process you may choose to install a new copy of ExpressionEngine or point Coilpack to the path of an existing installation.  Please note that ExpressionEngine 7 is required so if you would like to install Coilpack with an existing site you may need to upgrade your ExpressionEngine install first.
 
 ```
 php artisan coilpack
