@@ -29,9 +29,9 @@ Advanced
 ## Known Issues
 
 - Using Telescope will register a wildcard event listener that conflicts with how we translate ExpressionEngine extensions into Laravel Events.  For now we recommend setting `TELESCOPE_EVENT_WATCHER=false` in your .env file
-- While we fully intend to support Laravel 7 Coilpack is currently only working with Laravel 8 and 9.  This is due to a dependency restriction in the graphql package we are using.
+- While we fully intend to support Laravel 7, Coilpack is currently only working with Laravel 8 and 9.  This is due to a dependency restriction in the GraphQL package we are using.
 - The Channel Entries Eloquent model is currently not evaluating whether a field is conditionally hidden.
-- Coilpack works well out of the box with Laravel Valet and Apache but we have noticed some issues in certain Nginx installs.  We recommend using a configuration similar to the one below with Nginx:
+- Coilpack works well out of the box when using Laravel Valet and with Apache webservers, but we have noticed some issues in certain Nginx installs.  We recommend using a configuration similar to the one below with Nginx:
 
 ```
 server {
