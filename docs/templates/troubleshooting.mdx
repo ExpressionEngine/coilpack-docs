@@ -1,0 +1,23 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Troubleshooting
+
+Whether you are using Twig or Blade there is a helpful `dump()` function available to provide a nicely formatted version of PHP's native `var_dump()` output.  This can be incredibly useful when debugging a problem with a template or understanding more about the data being processed.
+
+<Tabs>
+<TabItem value="twig" label="Twig">
+
+```php
+{{ dump(entry.field_name) }}
+```
+
+</TabItem>
+<TabItem value="blade" label="Blade">
+
+```php
+@dump($entry->field_name)
+```
+
+</TabItem>
+</Tabs>
