@@ -61,14 +61,14 @@ exp:channel:entries category_id='2|45|4|9'
 <TabItem value="twig" label="Twig">
 
 ```php
-exp.channel.entries.category_id('2|45|4|9')
+exp.channel.entries({category_id: '2|45|4|9'})
 ```
 
 </TabItem>
 <TabItem value="blade" label="Blade">
 
 ```php
-$exp->channel->entries->category_id('2|45|4|9')
+$exp->channel->entries(['category_id' => '2|45|4|9'])
 ```
 
 </TabItem>
@@ -88,14 +88,14 @@ exp:channel:entries category_id='not 4|5|7'
 <TabItem value="twig" label="Twig">
 
 ```php
-exp.channel.entries.category_id('not 4|5|7')
+exp.channel.entries({category_id: 'not 4|5|7'})
 ```
 
 </TabItem>
 <TabItem value="blade" label="Blade">
 
 ```php
-$exp->channel->entries->category_id('not 4|5|7')
+$exp->channel->entries(['category_id' => 'not 4|5|7'])
 ```
 
 </TabItem>
@@ -118,14 +118,14 @@ exp:channel:entries channel='blog'
 <TabItem value="twig" label="Twig">
 
 ```php
-exp.channel.entries.channel('blog')
+exp.channel.entries({channel: 'blog'})
 ```
 
 </TabItem>
 <TabItem value="blade" label="Blade">
 
 ```php
-exp->channel->entries->channel('blog')
+exp->channel->entries(['channel' => 'blog'])
 ```
 
 </TabItem>
@@ -145,14 +145,14 @@ exp:channel:entries channel='channel1|channel2|channel3'
 <TabItem value="twig" label="Twig">
 
 ```php
-exp.channel.entries.channel('channel1|channel2|channel3')
+exp.channel.entries({channel: 'channel1|channel2|channel3'})
 ```
 
 </TabItem>
 <TabItem value="blade" label="Blade">
 
 ```php
-exp->channel->entries->channel('channel1|channel2|channel3')
+exp->channel->entries(['channel' => 'channel1|channel2|channel3'])
 ```
 
 </TabItem>
@@ -171,14 +171,14 @@ exp:channel:entries channel='not channel1|channel2|channel3'
 <TabItem value="twig" label="Twig">
 
 ```php
-exp.channel.entries.channel('not channel1|channel2|channel3')
+exp.channel.entries({channel: 'not channel1|channel2|channel3'})
 ```
 
 </TabItem>
 <TabItem value="blade" label="Blade">
 
 ```php
-exp->channel->entries->channel('not channel1|channel2|channel3')
+exp->channel->entries(['channel' => 'not channel1|channel2|channel3'])
 ```
 
 </TabItem>
@@ -191,7 +191,7 @@ The channel display engine sets some parameters dynamically, based on what is in
 This is often useful if you want to list entries in a “sidebar” on your site and have them always be the same ones regardless of which page on your site you visit (main page, archives, comments, etc.). By setting dynamic="no" you will ensure that the list is not affected by anything passed in the URL.
 
 ```php
-exp.channel.entries.dynamic()
+exp.channel.entries({dynamic: true})
 ```
 
 ### Entry ID
@@ -199,19 +199,19 @@ exp.channel.entries.dynamic()
 You can hard code the channel tag to show a specific channel entry.
 
 ```php
-exp.channel.entries.entry_id('147')
+exp.channel.entries({entry_id: '147'})
 ```
 
 You may also specify multiple entries by separating them with the pipe character:
 
 ```php
-exp.channel.entries.entry_id('13|42|147')
+exp.channel.entries({entry_id: '13|42|147'})
 ```
 
 Or use "not" to exclude entries::
 
 ```php
-exp.channel.entries.entry_id('not 45|534|807')
+exp.channel.entries({entry_id: 'not 45|534|807'})
 ```
 
 ### Fixed Order
@@ -219,7 +219,7 @@ exp.channel.entries.entry_id('not 45|534|807')
 You can hard code the channel entries tag to show entries in a specific order based on their entry ids. Entries will be displayed in the order specified in the pipe delimited list. In the example below, the three entries with id’s 3, 7, and 1 would be displayed in that order.
 
 ```php
-exp.channel.entries.fixed_order('3|7|1')
+exp.channel.entries({fixed_order: '3|7|1'})
 ```
 
 ### URL Title
@@ -227,13 +227,13 @@ exp.channel.entries.fixed_order('3|7|1')
 This parameter limits the query by an entry’s url_title. You can use the pipe character to query by multiple url_titles:
 
 ```php
-exp.channel.entries.url_title('my_wedding|my_honeymoon|my_kids')
+exp.channel.entries({url_title: 'my_wedding|my_honeymoon|my_kids'})
 ```
 
 Or you can add “not” to exclude url_titles:
 
 ```php
-exp.channel.entries.url_title('not my_in_laws')
+exp.channel.entries({url_title: 'not my_in_laws'})
 ```
 
 
@@ -243,5 +243,5 @@ exp.channel.entries.url_title('not my_in_laws')
 This parameter limits the number of entries on any given page. The limit will default to all entries if a value is not specified.
 
 ```php
-exp.channel.entries.limit(5)
+exp.channel.entries({limit: 5})
 ```

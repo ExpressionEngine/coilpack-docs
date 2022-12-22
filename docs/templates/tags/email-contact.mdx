@@ -14,7 +14,7 @@ exp.email.contact_form
 This parameter lets you specify a path (or full URL) where the user should be directed after the form is submitted. Upon submission, the user is presented with a standard “thank you” message and a link. If this parameter is not used, then the link will point to the page they were on prior to arriving at the email form.
 
 ```php
-exp.email.contact_form.return('email/thanks')
+exp.email.contact_form({return: 'email/thanks'})
 ```
 
 ### Form Class
@@ -22,7 +22,7 @@ exp.email.contact_form.return('email/thanks')
 With this parameter, you can specify the css class you want the form to have, enabling fine-grained styling of the form.
 
 ```php
-exp.email.contact_form.form_class('contact-form')
+exp.email.contact_form({form_class: 'contact-form'})
 ```
 
 ### Form ID
@@ -31,5 +31,5 @@ With this parameter, you can specify the css id you want the form to have. The d
 
 
 ```php
-exp.email.contact_form.form_id('contact_form')
+exp.email.contact_form({form_id: 'contact_form'})
 ```

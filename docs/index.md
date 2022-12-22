@@ -9,8 +9,7 @@ Coilpack is a composer package that lets you harness the powerful Laravel ecosys
 - [Events](./events.md)
 - [Routing](./routing.md)
 - [GraphQL](./graphql/index.md)
-- [Templates](./templates.md)
-- [Tags Reference](./tags/index.md)
+- [Templates](./templates/index.mdx)
 
 Advanced
 - [Authentication](./advanced/authentication.md)

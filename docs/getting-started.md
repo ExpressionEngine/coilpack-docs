@@ -1,8 +1,8 @@
 # Getting Started
 
-## What Happens To My ExpressionEngine Site? 
+## What Happens To My ExpressionEngine Site?
 
-It's important for Coilpack users to understand that when using Coilpack, your ExpressionEngine application will need to be accessed through the URL associated with your Laravel project. This is because Laravel handles all parsing of your templates so that you can use Blade and Twig. 
+It's important for Coilpack users to understand that when using Coilpack, your ExpressionEngine application will need to be accessed through the URL associated with your Laravel project. This is because Laravel handles all parsing of your templates so that you can use Blade and Twig.
 
 **New ExpressionEngine Sites**
 
@@ -14,8 +14,9 @@ For Example, if you have a current ExpressionEngine site located at `https://ama
 
 For the sake of SEO, current links in place, etc, once you decide to use Coilpack for your website, you will probably want to update your webserver to point your site's current URL to your Laravel project. Talk to your webserver admin for information on how to accomplish this.
 
-**Tip:** Read more about how URLs are handled inside of Coilpack in the [Routing Section](/routing)
-
+:::tip
+Read more about how URLs are handled inside of Coilpack in the [Routing Section](./routing.md)
+:::
 
 ## Selecting a Laravel Version
 
@@ -63,8 +64,9 @@ We recommend keeping your version of ExpressionEngine updated to the latest 7.x 
 
 **Install ExpressionEngine**
 
-If you chose for Coilpack to create a new copy of ExpressionEngine, you will find a new `ee` folder inside of your Laravel project.  You now need to install ExpressionEngine via the `admin.php` file in your `ee` folder. Example: `https://example.com/admin.php` . Follow the on-screen instructions to install ExpressionEngine. 
+If you chose for Coilpack to create a new copy of ExpressionEngine, you will find a new `ee` folder inside of your Laravel project.  You now need to install ExpressionEngine via the `admin.php` file in your `ee` folder. Example: `https://example.com/admin.php` . Follow the on-screen instructions to install ExpressionEngine.
 
-**Tip:** For more help with installing ExpressionEngine reference the [ExpressionEngine Docs](https://docs.expressionengine.com/latest/installation/installation.html)
-
+:::tip
+For more help with installing ExpressionEngine reference the [ExpressionEngine Docs](https://docs.expressionengine.com/latest/installation/installation.html)
+:::
 

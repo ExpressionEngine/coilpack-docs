@@ -1,0 +1,6 @@
+# Toggle
+
+```
+{{ entry.toggle }}
+```
+

@@ -1,0 +1,5 @@
+# Structure
+
+```
+{{ entry.structure }}
+```

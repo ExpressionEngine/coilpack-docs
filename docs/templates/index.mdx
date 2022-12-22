@@ -13,7 +13,7 @@ A big part of why Coilpack was created is to allow you to express your content t
 
 In ExpressionEngine 7.2.3+ you can now just create a regular template file and add the suffix `.twig` or `.blade` to the file.  For example you might want to create a `blog` listing that is rendered with Twig.  You would do this by creating a file at `user/templates/blog.group/index.html.twig`.  When a template is created this way you do not need the comment at the beginning.
 
-[Learn more about using Twig in ExpressionEngine from our guide](./guides/twig.md).
+[Learn more about using Twig in ExpressionEngine from our guide](../guides/twig.md).
 
 ## Twig and Blade in Laravel
 
@@ -34,14 +34,14 @@ Coilpack aims to maintain a familiar syntax with native ExpressionEngine templat
 <TabItem value="twig" label="Twig">
 
 ```php
-{{ exp.module_name.tag_name.parameter_1('value_1') }}
+{{ exp.module_name.tag_name({parameter_1: 'value_1'}) }}
 ```
 
 </TabItem>
 <TabItem value="blade" label="Blade">
 
 ```php
-{{ $exp->module_name->tag_name->parameter_1('value_1') }}
+{{ $exp->module_name->tag_name(['parameter_1' => 'value_1']) }}
 ```
 
 </TabItem>
@@ -72,7 +72,7 @@ In ExpressionEngine much of our content is retrieved through the Channel Entries
 <TabItem value="twig" label="Twig">
 
 ```php
-{% for entry in exp.channel.entries.channel('blog') %}
+{% for entry in exp.channel.entries({channel: 'blog'}) %}
     <h1>{{ entry.title }}</h1>
     <div>
         {{ entry.page_content }}
@@ -86,7 +86,7 @@ In ExpressionEngine much of our content is retrieved through the Channel Entries
 <TabItem value="blade" label="Blade">
 
 ```php
-@forelse($exp->channel->entries->channel('blog') as $entry)
+@forelse($exp->channel->entries(['channel' => 'blog']) as $entry)
     <h1>{{ $entry->title }}</h1>
     <div>
         {{ $entry->page_content }}
@@ -138,4 +138,4 @@ We have provided the default ExpressionEngine theme converted into Twig and Blad
 
 ## Add-on Developers
 
-If you are an ExpressionEngine Add-on developer looking to understand more about how Coilpack handles template tags in Twig and Blade please read our [Add-ons Documentations](./advanced/addons.md).
+If you are an ExpressionEngine Add-on developer looking to understand more about how Coilpack handles template tags in Twig and Blade please read our [Add-ons Documentations](../advanced/addons.md).

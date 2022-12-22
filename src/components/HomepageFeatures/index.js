@@ -5,7 +5,7 @@ import styles from './styles.module.css';
 const FeatureList = [
   {
     title: 'Twig & Blade Support',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    Svg: require('@site/static/img/undraw_programming_re_kg9v.svg').default,
     description: (
       <>
         Choose between the powerful powerful Twig and Blade templating engines.
@@ -14,7 +14,7 @@ const FeatureList = [
   },
   {
     title: 'GraphQL Integration',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    Svg: require('@site/static/img/undraw_progressive_app_m-9-ms.svg').default,
     description: (
       <>
         Power your headless site with ExpressionEngine through our built-in
@@ -24,7 +24,7 @@ const FeatureList = [
   },
   {
     title: 'The Power of Laravel',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    Svg: require('@site/static/img/undraw_laravel_and_vue_-59-tp.svg').default,
     description: (
       <>
         Access all of your ExpressionEngine content from within a Laravel Application

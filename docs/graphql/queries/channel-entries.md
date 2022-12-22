@@ -1,6 +1,6 @@
 # Channel Entries
 
-The Channel Entries query is designed to mimic the [Channel Entries Tag](./tags/channel-entries.mdx) and provide access to all of your entries and their data.
+The Channel Entries query is designed to mimic the [Channel Entries Tag](../../templates/tags/channel-entries.mdx) and provide access to all of your entries and their data.
 
 ## Example Usage
 
