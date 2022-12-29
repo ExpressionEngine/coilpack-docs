@@ -1,6 +1,16 @@
 # Coilpack
 
-Coilpack is a composer package that lets you harness the powerful Laravel ecosystem to bring your ExpressionEngine content forward in exciting new ways.  Once installed in a standard Laravel application Coilpack loads ExpressionEngine and connects many core services
+*Currently in Beta*
+
+Coilpack is a composer package that lets you harness the powerful Laravel ecosystem to bring your ExpressionEngine content forward in exciting new ways.  Once installed in a standard Laravel application Coilpack loads ExpressionEngine and integrates many core services.
+
+## Feature Highlights
+
+- Twig & Blade support for many ExpressionEngine tags
+- Translate ExpressionEngine Extension Hooks into Laravel Events
+- GraphQL endpoint for querying ExpressionEngine content
+- Access the ExpressionEngine container inside Laravel
+- ExpressionEngine authenticated members available natively within Laravel
 
 ## Table of Contents
 
@@ -17,19 +27,11 @@ Advanced
 - [Database](./advanced/database.md)
 - [Add-ons](./advanced/addons.md)
 
-## Features
-
-- Twig & Blade support for many ExpressionEngine tags
-- Translate ExpressionEngine Extension Hooks into Laravel Events
-- GraphQL endpoints for ExpressionEngine content
-- Access the ExpressionEngine container inside Laravel
-- ExpressionEngine authenticated members can be referenced within Laravel
-
 ## Known Issues
 
-- Using Telescope will register a wildcard event listener that conflicts with how we translate ExpressionEngine extensions into Laravel Events.  For now we recommend setting `TELESCOPE_EVENT_WATCHER=false` in your .env file
+- Using Laravel Telescope will register a wildcard event listener that conflicts with how we translate ExpressionEngine extensions into Laravel Events.  For now we recommend setting `TELESCOPE_EVENT_WATCHER=false` in your .env file otherwise your site may not render properly.
 - While we fully intend to support Laravel 7, Coilpack is currently only working with Laravel 8 and 9.  This is due to a dependency restriction in the GraphQL package we are using.
-- The Channel Entries Eloquent model is currently not evaluating whether a field is conditionally hidden.
+- The Channel Entries Eloquent model does not currently support conditional field logic.
 - Coilpack works well out of the box when using Laravel Valet and with Apache webservers, but we have noticed some issues in certain Nginx installs.  We recommend using a configuration similar to the one below with Nginx:
 
 ```
@@ -94,4 +96,4 @@ server {
 
 ## What's with the name?
 
-The name comes from the automotive component which is responsible for delivering high voltage to the spark plug and igniting the fuel.  We thought the name was fitting for the way this package integrates Laravel's Illuminate components with ExpressionEngine
+The name comes from the automotive component.  A *coil pack* is responsible for delivering high voltage to the spark plug and igniting the fuel.  We thought the name was fitting for how this package integrates Laravel's Illuminate components with ExpressionEngine to power new possibilities.

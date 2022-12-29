@@ -9,7 +9,7 @@ const config = {
     title: 'Coilpack',
     tagline: 'ExpressionEngine',
     url: 'https://your-docusaurus-test-site.com',
-    baseUrl: '/',
+    baseUrl: '/coilpack-docs',
     onBrokenLinks: 'throw',
     onBrokenMarkdownLinks: 'warn',
     favicon: 'img/favicon.ico',

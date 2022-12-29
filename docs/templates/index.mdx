@@ -3,17 +3,19 @@ import TabItem from '@theme/TabItem';
 
 # Templates
 
-A big part of why Coilpack was created is to allow you to express your content through multiple templating engines.  We currently support two powerful and popular options: [Twig](https://twig.symfony.com/) and [Blade](https://laravel.com/docs/9.x/blade#introduction).
+A big part of why Coilpack was created is to allow you to express your content through multiple templating engines.
+We currently support two powerful and popular options: [Twig](https://twig.symfony.com/)
+and [Blade](https://laravel.com/docs/9.x/blade#introduction).
 
 ## Twig and Blade in ExpressionEngine
 
-~~To use Twig or Blade within an ExpressionEngine template you will need to add a comment to the beginning of the template.  This applies whether you manage the template through the control panel Template Manager or on the filesystem with a text editor.~~
+In ExpressionEngine 7.2.3+ you can create a regular template file and add the suffix `.twig` or `.blade` to the file.
+This will tell ExpressionEngine which template engine should be used to render your content.
 
-~~For Twig you would start your template with `{!-- template:twig --}` and Blade would start with `{!-- template:blade --}`.  These comments will be removed before the content is rendered.~~
+For example you might want to create a `blog` listing that is rendered with Twig.
+You would do this by creating a file at `user/templates/blog.group/index.html.twig`.
 
-In ExpressionEngine 7.2.3+ you can now just create a regular template file and add the suffix `.twig` or `.blade` to the file.  For example you might want to create a `blog` listing that is rendered with Twig.  You would do this by creating a file at `user/templates/blog.group/index.html.twig`.  When a template is created this way you do not need the comment at the beginning.
-
-[Learn more about using Twig in ExpressionEngine from our guide](../guides/twig.md).
+[Learn more about using Twig in ExpressionEngine from our guide](../guides/using-twig-templates.md).
 
 ## Twig and Blade in Laravel
 
