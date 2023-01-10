@@ -1,6 +1,6 @@
 ---
 slug: solspace-podcast
-title: Solspace Pocast on Coilpack
+title: Solspace Podcast on Coilpack
 authors: [tom]
 tags: [coilpack, podcast, solspace]
 ---
