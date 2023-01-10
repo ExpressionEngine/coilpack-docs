@@ -47,7 +47,7 @@ composer create-project --prefer-dist laravel/laravel:^8.0 project-name
 Inside of your Laravel project, you will need to update your project to use the Coilpack package.
 
 ```
-composer require expressionengine/coilpack
+composer require expressionengine/coilpack:0.x
 ```
 
 **Run Coilpack Setup**
