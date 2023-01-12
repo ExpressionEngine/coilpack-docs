@@ -32,18 +32,22 @@ if(method_exists(ee()->TMPL, 'set_data')) {
 }
 ```
 
+## Checking for Coilpack
 
-## Custom Template Tags
+Sometimes you may want to load or register services specifically for Coilpack interactions. This can be accomplished by
+checking if Coilpack is registered on the `ee()` object.
 
-If your addon provides template tags and you would like to provide a custom implementation for Coilpack you can!  The following code shows how you can check if Coilpack is enabled and when it is register a new tag handler.
 
 ```php
 if (ee()->has('coilpack')) {
-    ee()->coilpack->registerTag('addon.tagname', 'Addon\Tags\TagName');
+    // Coilpack specific code
 }
 ```
 
-The Tag class should extend `Expressionengine\Coilpack\View\Tag`.  There are also two other base Tag classes used internally by Coilpack and available for your use.  They are `Expressionengine\Coilpack\View\ModelTag` which provides some conveniences for a Tag that wraps an Eloquent model.  And `Expressionengine\Coilpack\View\FormTag` which can help get you started with a tag that renders an HTML form.
+
+## Custom Template Tags
+
+If your addon provides template tags but you would like to provide a custom implementation for Coilpack you can!  You will need to create a new class for your Tag which should extend `Expressionengine\Coilpack\View\Tag`.  There are also two other base Tag classes used internally by Coilpack and available for your use.  They are `Expressionengine\Coilpack\View\ModelTag` which provides some conveniences for a Tag that wraps an Eloquent model.  And `Expressionengine\Coilpack\View\FormTag` which can help you get started with a tag that renders an HTML form.
 
 Here is an example:
 
@@ -67,15 +71,8 @@ class TagName extends Tag
 
 ## Custom Fieldtypes
 
-Similarly, it is also possible to handle the display of your Add-on's fieldtype data differently when it is referenced in Coilpack.
-
-```php
-if (ee()->has('coilpack')) {
-    ee()->coilpack->registerFieldtype('super_checkbox', 'Addon\Fieldtypes\SuperCheckbox');
-}
-```
-
-The fieldtype class should extend `Expressionengine\Coilpack\Fieldtypes\Fieldtype`
+It is also possible to handle the display of your Add-on's fieldtype data differently when it is referenced in Coilpack.
+You can create a new fieldtype class which should extend `Expressionengine\Coilpack\Fieldtypes\Fieldtype`
 
 Here is an example:
 
@@ -91,16 +88,17 @@ use Expressionengine\Coilpack\Models\FieldContent;
 class SuperCheckbox extends Fieldtype
 {
 
-    public function apply(FieldContent $content)
+    public function apply(FieldContent $content, array $parameters = [])
     {
         return FieldtypeOutput::make('test');
     }
 }
 ```
 
-## Using Add-on Setup Data
+## Registering Custom Files
 
-You can also register Coilpack specific classes in your add-on's setup data like this:
+Once you have created your Coilpack specific classes you will need to register them so Coilpack can use them.
+We recommend doing this in your add-on's setup file (addon.setup.php) by adding a new `coilpack` section like this:
 
 ```php
 return array(
@@ -116,4 +114,13 @@ return array(
         ]
     ]
 );
+```
+
+Alternatively if you need more control you can also register tags and fieldtypes like this:
+
+```php
+if (ee()->has('coilpack')) {
+    ee()->coilpack->registerTag('addon.tagname', 'Addon\Tags\TagName');
+    ee()->coilpack->registerFieldtype('super_checkbox', 'Addon\Fieldtypes\SuperCheckbox');
+}
 ```
