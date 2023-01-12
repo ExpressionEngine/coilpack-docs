@@ -21,11 +21,15 @@ Coilpack is a composer package that lets you harness the powerful Laravel ecosys
 - [GraphQL](./graphql/index.md)
 - [Templates](./templates/index.mdx)
 
-Advanced
+**Advanced**
+- [Add-ons](./advanced/addons.md)
 - [Authentication](./advanced/authentication.md)
 - [Filesystem](./advanced/filesystem.md)
 - [Database](./advanced/database.md)
-- [Add-ons](./advanced/addons.md)
+
+## Changelog
+
+To view a list of changes in the project please visit the [current changelog](https://github.com/ExpressionEngine/Coilpack/blob/0.x/CHANGELOG.md).
 
 ## Known Issues
 

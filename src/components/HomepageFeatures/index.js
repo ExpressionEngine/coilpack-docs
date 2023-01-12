@@ -8,7 +8,7 @@ const FeatureList = [
     Svg: require('@site/static/img/undraw_programming_re_kg9v.svg').default,
     description: (
       <>
-        Choose between the powerful powerful Twig and Blade templating engines.
+        Choose between the powerful Twig and Blade templating engines.
       </>
     ),
   },
