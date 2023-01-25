@@ -20,3 +20,15 @@ Query against your categories and their content.
 *Status* - Specify the status of the categories
 
 *Limit* - Limit the number of results
+
+
+## Single Category
+
+```json
+{
+    category(category_id:1) {
+        cat_id
+        custom_category_field
+	}
+}
+```

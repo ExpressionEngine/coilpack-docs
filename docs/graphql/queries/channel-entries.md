@@ -52,3 +52,14 @@ ExpressionEngine has a concept of [variable modifiers](https://docs.expressionen
     }
 }
 ```
+
+## Single Channel Entry
+
+```json
+{
+    channel_entry(entry_id:1) {
+        entry_id
+        title
+	}
+}
+```
