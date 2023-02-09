@@ -107,7 +107,7 @@ return array(
     ...
     'coilpack' => [
         'tags' => [
-            'addon.tagname' => 'Addon\Tags\TagName'
+            'tagname' => 'Addon\Tags\TagName'
         ],
         'fieldtypes' => [
             'super_checkbox' => 'Addon\Fieldtypes\SuperCheckbox'
