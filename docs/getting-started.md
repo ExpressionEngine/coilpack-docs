@@ -24,13 +24,13 @@ We recommend using the latest version of Laravel whenever possible.  If you are 
 
 | PHP     | Laravel |
 | ------- | ------- |
+| 8.1.0+  | 10.x    |
 | 8.0.2+  | 9.x     |
-| 7.3.0+  | 8.x     |
-| 7.2.5+  | 7.x     |
+| 7.4.0+  | 8.x     |
 
 ## Installation
 
-To use Coilpack You will need a development environment with PHP >= 7.2.5 and Composer installed. Consult the [Laravel Installation documentation](https://laravel.com/docs/9.x/installation) for more help on setting up your environment.
+To use Coilpack You will need a development environment with PHP >= 7.4.0 and Composer installed. Consult the [Laravel Installation documentation](https://laravel.com/docs/9.x/installation) for more help on setting up your environment.
 
 
 **Create A Laravel Project**
@@ -43,6 +43,10 @@ composer create-project --prefer-dist laravel/laravel:^8.0 project-name
 :::info
 Be sure to setup your webserver to point to the `public` folder inside your Laravel project. Laravel Valet and Laravel Sail will do this automatically.
 :::
+
+**Configure your Laravel Project**
+
+Now that you have a Laravel Project setup it is a good time to edit the values in your `.env` file to reflect your setup.  The `APP_URL` and `DB_*` variables are particularly important.
 
 **Install Coilpack**
 
