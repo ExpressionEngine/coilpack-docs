@@ -22,6 +22,9 @@ You can interact with your site's GraphQL endpoints by using the built-in Graphi
 
 Alternatively we recommend using [GraphQL Playground](https://github.com/graphql/graphql-playground) or [Insomnia](https://insomnia.rest/) to test your queries.
 
+## Add-on Developers
+
+If you are developing an Add-on for ExpressionEngine and would like to support GraphQL please refer to our [Add-ons documentation](../advanced/addons/graphql).
 
 
 
