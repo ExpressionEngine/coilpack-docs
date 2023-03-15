@@ -59,14 +59,14 @@ Coilpack is using the [Laravel TwigBridge package](https://github.com/rcrowe/Twi
 - input_get, input_old, input_has
 - link_to, link_to_asset, link_to_route, link_to_action
 - session_has, session_get, csrf_token, csrf_field, method_field
-- str_* (All the [Str::* methods](https://laravel.com/docs/8.x/helpers#strings-method-list), snake_cased)
+- str_* (All the [Str:: methods](https://laravel.com/docs/8.x/helpers#strings-method-list), snake_cased)
 - trans, trans_choice
-- url_* (All the [URL::* methods](https://laravel.com/docs/8.x/helpers#urls-method-list), snake_cased)
+- url_* (All the [URL:: methods](https://laravel.com/docs/8.x/helpers#urls-method-list), snake_cased)
 
 **Filters**:
 
 - camel_case, snake_case, studly_case
-- str_* (All the [Str::* methods](https://laravel.com/docs/8.x/helpers#strings-method-list), snake_cased)
+- str_* (All the [Str:: methods](https://laravel.com/docs/8.x/helpers#strings-method-list), snake_cased)
 - trans, trans_choice
 
 

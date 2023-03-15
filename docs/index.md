@@ -12,24 +12,20 @@ Coilpack is a composer package that lets you harness the powerful Laravel ecosys
 - Access the ExpressionEngine container inside Laravel
 - ExpressionEngine authenticated members available natively within Laravel
 
-## Table of Contents
-
-- [Getting Started](./getting-started.md)
-- [Configuration](./configuration.md)
-- [Events](./events.md)
-- [Routing](./routing.md)
-- [GraphQL](./graphql/index.md)
-- [Templates](./templates/index.mdx)
-
-**Advanced**
-- [Add-ons](./advanced/addons.md)
-- [Authentication](./advanced/authentication.md)
-- [Filesystem](./advanced/filesystem.md)
-- [Database](./advanced/database.md)
 
 ## Changelog
 
 To view a list of changes in the project please visit the [current changelog](https://github.com/ExpressionEngine/Coilpack/blob/0.x/CHANGELOG.md).
+
+## Frequently Asked Questions
+
+**Why didn’t we put this in the core?**
+
+We chose to build Coilpack as a separate package so that ExpressionEngine could remain a product focused on stability without major changes affecting our users and add-on developers.  This also gives us flexibility in developing Coilpack to approach solutions in a fresh light and shed some technical debt.
+
+**Why was it built in Laravel and not another framework?**
+
+Packet Tide has been working with Laravel since version 4 which was released almost 10 years ago.  Our experience with the framework is the main reason we chose Laravel along with how easy it makes writing clean expressive code.  This project is completely open source and if somebody wants to fork it and convert Laravel bindings and service providers into another framework that is totally fine.  We may work on extracting pieces into a more framework agnostic package but we believe this was our fastest and most effective way to bring this functionality to our customer base.
 
 ## Known Issues
 
