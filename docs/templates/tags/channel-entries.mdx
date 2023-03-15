@@ -4,11 +4,15 @@ import TabItem from '@theme/TabItem';
 
 # Channel Entries
 
-The Channel Entries tag returns an Eloquent Collection of ChannelEntry models. You may also use any Eloquent query builder methods on this tag.
+The Channel Entries tag is the primary tag used within your Templates to show the content you create and edit via your Control Panel’s Create or Edit section. It’s the most powerful tag in ExpressionEngine, and the most commonly used since its main function is to retrieve and display your site’s content.
 
-## Example Usage
+The Channel Entries tag can display both multi-entry and single-entry content–that is, several entries on a page, or one specific entry.
 
-<Tabs groupId="templating-engines">
+:::note
+Coilpack provides a slightly different experience for the classic channel entries tag when used in a Twig, Blade or GraphQL context.  Most notably the `dynamic` parameter is not enabled by default Pagination is handled differently and some parameters may behave differently. See the ExpressionEngine Documentation for additional information on the [Channel Entries Tag](https://docs.expressionengine.com/latest/channels/entries.html)
+:::
+
+<Tabs>
 <TabItem value="native" label="Native">
 
 ```php
@@ -20,7 +24,7 @@ The Channel Entries tag returns an Eloquent Collection of ChannelEntry models. Y
 </TabItem>
 <TabItem value="twig" label="Twig">
 
-```php
+```twig
 {% for entry in exp.channel.entries %}
     {{ entry.title }}
 {% endfor %}
@@ -36,12 +40,149 @@ The Channel Entries tag returns an Eloquent Collection of ChannelEntry models. Y
 ```
 
 </TabItem>
+<TabItem value="graphql" label="GraphQL">
+
+```graphql
+{
+    exp_channel_entries {
+        data {
+            title
+        }
+    }
+}
+```
+
+</TabItem>
 </Tabs>
 
 
 ## Parameters
 
+The examples below are how the Channel Entries tag would look using every parameter.  Please note that this is only for illustration purposes as some of these parameters would never be used together to achieve a meaningful result.
 
+<Tabs groupId="templating-engines">
+<TabItem value="native" label="Native">
+
+```php
+{exp:channel:entries
+    author_id="3"
+    category_id="2|45|4|9"
+    category="cars|sports"
+    channel="channel1|channel2"
+    dynamic="yes"
+    entry_id="not 45|534|807"
+    fixed_order="3|7|1"
+    group_id="4"
+    limit="1"
+    orderby="title"
+    search:body="pickles"
+    site="1"
+    sort="asc"
+    start_on="2023-01-01"
+    stop_before="2023-02-01"
+    url_title="my_wedding|my_honeymoon|my_kids"
+    username="petunia"
+}
+    {title}
+{/exp:channel:entries}
+```
+
+</TabItem>
+<TabItem value="twig" label="Twig">
+
+```twig
+{% for entry in exp.channel.entries({
+    author_id: "3",
+    category_id: "2|45|4|9",
+    category: "cars|sports",
+    channel: "channel1|channel2",
+    dynamic: true,
+    entry_id: "not 45|534|807",
+    fixed_order: "3|7|1",
+    group_id: "4",
+    limit: 1,
+    orderby: "title",
+    search: {body: "pickles"},
+    site: "1",
+    sort: "asc",
+    start_on: "2023-01-01",
+    stop_before: "2023-02-01",
+    url_title: "my_wedding|my_honeymoon|my_kids",
+    username: "petunia"
+}) %}
+    {{ entry.title }}
+{% endfor %}
+```
+
+</TabItem>
+<TabItem value="blade" label="Blade">
+
+```php
+@foreach($exp->channel->entries([
+    "author_id" => "3",
+    "category_id" => "2|45|4|9",
+    "category" => "cars|sports",
+    "channel" => "channel1|channel2",
+    "dynamic" => true,
+    "entry_id" => "not 45|534|807",
+    "fixed_order" => "3|7|1",
+    "group_id" => "4",
+    "limit" => 1,
+    "orderby" => "title",
+    "search" => ["body" => "pickles"],
+    "site" => "1",
+    "sort" => "asc",
+    "start_on" => "2023-01-01",
+    "stop_before" => "2023-02-01",
+    "url_title" => "my_wedding|my_honeymoon|my_kids",
+    "username" => "petunia"
+]) as $entry)
+    {{ $entry->title }}
+@endforeach
+```
+
+</TabItem>
+<TabItem value="graphql" label="GraphQL">
+
+```graphql
+{
+    exp_channel_entries(
+        author_id: "3",
+        category_id: "2|45|4|9",
+        category: "cars|sports",
+        channel: "channel1|channel2",
+        dynamic: true,
+        entry_id: "not 45|534|807",
+        fixed_order: "3|7|1",
+        group_id: "4",
+        limit: 1,
+        orderby: "title",
+        search: {body: "pickles"},
+        site: "1",
+        sort: "asc",
+        start_on: "2023-01-01",
+        stop_before: "2023-02-01",
+        url_title: "my_wedding|my_honeymoon|my_kids",
+        username: "petunia"
+    ) {
+        data {
+            title
+        }
+    }
+}
+```
+
+</TabItem>
+</Tabs>
+
+
+### Author ID
+
+The `author_id` parameter will limit the returned entries to the specified Member ID
+
+```php
+author_id: 3
+```
 
 ### Category ID
 
@@ -49,149 +190,54 @@ Categories are specified by ID number (the ID number of each category is display
 
 And as with some of the other parameters, you can stack categories to get entries with any of those categories
 
-
-<Tabs groupId="templating-engines">
-<TabItem value="native" label="Native">
-
 ```php
-exp:channel:entries category_id='2|45|4|9'
+category_id: "2|45|4|9"
 ```
 
-</TabItem>
-<TabItem value="twig" label="Twig">
+Or use "not" to exclude categories
 
 ```php
-exp.channel.entries({category_id: '2|45|4|9'})
+category_id: "not 4|5|7"
 ```
 
-</TabItem>
-<TabItem value="blade" label="Blade">
+
+### Category
+
+This parameter works in the same way as `category_id` but takes the category `url_title` instead of an `id`.  Please be aware that there are pitfalls to using the `url_title` mentioned above.
 
 ```php
-$exp->channel->entries(['category_id' => '2|45|4|9'])
+category: "cars|sports"
 ```
-
-</TabItem>
-</Tabs>
-
-
-Or use “not” to exclude categories
-
-<Tabs groupId="templating-engines">
-<TabItem value="native" label="Native">
-
-```php
-exp:channel:entries category_id='not 4|5|7'
-```
-
-</TabItem>
-<TabItem value="twig" label="Twig">
-
-```php
-exp.channel.entries({category_id: 'not 4|5|7'})
-```
-
-</TabItem>
-<TabItem value="blade" label="Blade">
-
-```php
-$exp->channel->entries(['category_id' => 'not 4|5|7'])
-```
-
-</TabItem>
-</Tabs>
-
 
 
 ### Channel
 
 Choose which channel to show the entries (will show all channels if no channel is specified).
 
-<Tabs groupId="templating-engines">
-<TabItem value="native" label="Native">
-
 ```php
-exp:channel:entries channel='blog'
+channel: "blog"
 ```
-
-</TabItem>
-<TabItem value="twig" label="Twig">
-
-```php
-exp.channel.entries({channel: 'blog'})
-```
-
-</TabItem>
-<TabItem value="blade" label="Blade">
-
-```php
-exp->channel->entries(['channel' => 'blog'])
-```
-
-</TabItem>
-</Tabs>
-
 
 Additionally, you can use the pipe character to separate multiple channels:
 
-<Tabs groupId="templating-engines">
-<TabItem value="native" label="Native">
-
 ```php
-exp:channel:entries channel='channel1|channel2|channel3'
+channel: "channel1|channel2|channel3"
 ```
-
-</TabItem>
-<TabItem value="twig" label="Twig">
-
-```php
-exp.channel.entries({channel: 'channel1|channel2|channel3'})
-```
-
-</TabItem>
-<TabItem value="blade" label="Blade">
-
-```php
-exp->channel->entries(['channel' => 'channel1|channel2|channel3'])
-```
-
-</TabItem>
-</Tabs>
 
 Or you can add the word "not" (with a space after it) to exclude channels:
 
-<Tabs groupId="templating-engines">
-<TabItem value="native" label="Native">
-
 ```php
-exp:channel:entries channel='not channel1|channel2|channel3'
+channel: "not channel1|channel2|channel3"
 ```
-
-</TabItem>
-<TabItem value="twig" label="Twig">
-
-```php
-exp.channel.entries({channel: 'not channel1|channel2|channel3'})
-```
-
-</TabItem>
-<TabItem value="blade" label="Blade">
-
-```php
-exp->channel->entries(['channel' => 'not channel1|channel2|channel3'])
-```
-
-</TabItem>
-</Tabs>
 
 ### Dynamic
 
-The channel display engine sets some parameters dynamically, based on what is in the URL. There are times, however, where you do not want the parameters affected by what the URL contains.
+When enabled the channel entries tag will select an entry dynamically based on what is in the URL.  The native ExpressionEngine Channel Entries tag has `dynamic=true` by default, however Coilpack operates differently and uses `dynamic: false` as a default.
 
-This is often useful if you want to list entries in a “sidebar” on your site and have them always be the same ones regardless of which page on your site you visit (main page, archives, comments, etc.). By setting dynamic="no" you will ensure that the list is not affected by anything passed in the URL.
+If you want to list entries in a "sidebar" on your site and have them always be the same ones regardless of which page on your site you visit (main page, archives, comments, etc.) then you will want to use the default `dynamic: false` parameter.
 
 ```php
-exp.channel.entries({dynamic: true})
+dynamic: true
 ```
 
 ### Entry ID
@@ -199,19 +245,19 @@ exp.channel.entries({dynamic: true})
 You can hard code the channel tag to show a specific channel entry.
 
 ```php
-exp.channel.entries({entry_id: '147'})
+entry_id: "147"
 ```
 
 You may also specify multiple entries by separating them with the pipe character:
 
 ```php
-exp.channel.entries({entry_id: '13|42|147'})
+entry_id: "13|42|147"
 ```
 
 Or use "not" to exclude entries::
 
 ```php
-exp.channel.entries({entry_id: 'not 45|534|807'})
+entry_id: "not 45|534|807"
 ```
 
 ### Fixed Order
@@ -219,29 +265,129 @@ exp.channel.entries({entry_id: 'not 45|534|807'})
 You can hard code the channel entries tag to show entries in a specific order based on their entry ids. Entries will be displayed in the order specified in the pipe delimited list. In the example below, the three entries with id’s 3, 7, and 1 would be displayed in that order.
 
 ```php
-exp.channel.entries({fixed_order: '3|7|1'})
-```
-
-### URL Title
-
-This parameter limits the query by an entry’s url_title. You can use the pipe character to query by multiple url_titles:
-
-```php
-exp.channel.entries({url_title: 'my_wedding|my_honeymoon|my_kids'})
-```
-
-Or you can add “not” to exclude url_titles:
-
-```php
-exp.channel.entries({url_title: 'not my_in_laws'})
+fixed_order: "3|7|1"
 ```
 
 
+### Group ID
 
 ### Limit
 
 This parameter limits the number of entries on any given page. The limit will default to all entries if a value is not specified.
 
 ```php
-exp.channel.entries({limit: 5})
+limit: 5
 ```
+
+### Orderby
+
+The orderby parameter sets the display order of the entries.
+
+```php
+orderby: "title"
+```
+
+### Search
+
+The `search` parameter allows you to constrain Channel Entries output based on content within your fields. You specify which field to search by using the field’s short name as a key in the parameter value. You can search based on whether a field is an exact match to your provided term or whether or not a field simply contains your term.
+
+```php
+search: {body: "pickles"}
+```
+
+### Site
+
+The `site` parameter restricts the entries to your specified `site_id`.
+
+```php
+site: "1"
+```
+
+### Sort
+
+The sort order can be ascending or descending. The order will default to “descending” if nothing is specified.
+
+### Start On
+
+You can specify a particular date/time on which to start the entries. Only entries that are on or after this date will be included in the display. This parameter is often used together with the stop_before= parameter for limiting the entry display to a specific date range.
+
+### Stop Before
+
+You can specify a particular date/time on which to end the entries. Only entries that are before this date will be included in the display (entries exactly on this date/time will not be included). This parameter is often used together with the start_on= parameter for limiting the entry display to a specific date range.
+
+### URL Title
+
+This parameter limits the query by an entry’s url_title. You can use the pipe character to query by multiple url_titles:
+
+```php
+url_title: "my_wedding|my_honeymoon|my_kids"
+```
+
+Or you can add "not" to exclude url_titles:
+
+```php
+url_title: "not my_in_laws"
+```
+
+
+## Pagination
+
+Coilpack is using Laravel's Pagination library. For more information on how to customize the response please consult the [documentation on displaying pagination results](https://laravel.com/docs/8.x/pagination#displaying-pagination-results).
+
+<Tabs groupId="templating-engines">
+<TabItem value="native" label="Native">
+
+```php
+{exp:channel:entries paginate="top"}
+    {title}
+{/exp:channel:entries}
+```
+
+</TabItem>
+<TabItem value="twig" label="Twig">
+
+```twig
+{% set entries = exp.channel.entries({per_page:5}) %}
+{% for entry in entries %}
+    {{ entry.title }}
+{% endfor %}
+{{ entries.links }}
+```
+
+</TabItem>
+<TabItem value="blade" label="Blade">
+
+```php
+@php
+    $entries = $exp->channel->entries(["per_page" => 5]);
+@endphp
+
+@foreach($entries as $entry)
+    {{ $entry->title }}
+@endforeach
+
+{{ $entries->links() }}
+```
+
+</TabItem>
+<TabItem value="graphql" label="GraphQL">
+
+```graphql
+{
+    exp_channel_entries(per_page: 5) {
+        data {
+            title
+        }
+        total
+        per_page
+        current_page
+        from
+        to
+        last_page
+        has_more_pages
+    }
+}
+```
+
+</TabItem>
+</Tabs>

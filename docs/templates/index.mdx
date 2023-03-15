@@ -3,9 +3,16 @@ import TabItem from '@theme/TabItem';
 
 # Templates
 
-A big part of why Coilpack was created is to allow you to express your content through multiple templating engines.
-We currently support two powerful and popular options: [Twig](https://twig.symfony.com/)
+A big part of why Coilpack was created is to allow you to express your content through multiple templating engines. We currently support two powerful and popular options: [Twig](https://twig.symfony.com/)
 and [Blade](https://laravel.com/docs/9.x/blade#introduction).
+
+The following is a brief overview of the available template languages to help you decide which language might suit you best.
+
+**Blade** is a great option if you are familiar with the PHP language.  It offers some nice syntactical improvements over plain PHP while keeping the power and control.
+
+**Twig** provides a great layer of abstraction over plain PHP while providing familiar control structures and a filter system to accomplish most things possible in raw PHP.
+
+**ExpressionEngine Native** template language is a simplified syntax designed to be easily understood by someone unfamiliar with PHP or programming languages in general.
 
 ## Twig and Blade in ExpressionEngine
 
@@ -35,7 +42,7 @@ Coilpack aims to maintain a familiar syntax with native ExpressionEngine templat
 </TabItem>
 <TabItem value="twig" label="Twig">
 
-```php
+```twig
 {{ exp.module_name.tag_name({parameter_1: 'value_1'}) }}
 ```
 
@@ -73,7 +80,7 @@ In ExpressionEngine much of our content is retrieved through the Channel Entries
 </TabItem>
 <TabItem value="twig" label="Twig">
 
-```php
+```twig
 {% for entry in exp.channel.entries({channel: 'blog'}) %}
     <h1>{{ entry.title }}</h1>
     <div>
@@ -120,7 +127,7 @@ All of the regular ExpressionEngine global variables are available to you inside
 </TabItem>
 <TabItem value="twig" label="Twig">
 
-```php
+```twig
 {{ global.structure.parent.id }}
 ```
 

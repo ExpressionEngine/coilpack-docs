@@ -1,19 +1,62 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+
 # Structure Entries
 
-The Structure Entries tag returns an Eloquent Collection of ChannelEntry models. You may also use any Eloquent query builder methods on this tag.
+The Structure Entries tag extends the functionality of the [Channel Entries tag](./channel-entries.mdx) so all of the parameters and functionality documented for that tag will also apply here.
 
-## Example
+<Tabs>
+<TabItem value="native" label="Native">
 
 ```php
-exp.structure.entries
+{exp:structure:entries}
+    {title}
+{/exp:structure:entries}
 ```
 
+</TabItem>
+<TabItem value="twig" label="Twig">
+
+```twig
+{% for entry in exp.structure.entries %}
+    {{ entry.title }}
+{% endfor %}
+```
+
+</TabItem>
+<TabItem value="blade" label="Blade">
+
+```php
+@foreach($exp->structure->entries as $entry)
+    {{ $entry->title }}
+@endforeach
+```
+
+</TabItem>
+<TabItem value="graphql" label="GraphQL">
+
+```graphql
+{
+    exp_structure_entries {
+        data {
+            title
+        }
+    }
+}
+```
+
+</TabItem>
+</Tabs>
+
 ## Parameters
+
+These are a few of the parameters and behaviors that are unique to the Structure Entries tag.
 
 ### Parent ID
 
 Determine which children to show within the entries tag. A value of 0 will show the top level.
 
 ```php
-exp.structure.entries({parent_id: 5})
+parent_id: 5
 ```

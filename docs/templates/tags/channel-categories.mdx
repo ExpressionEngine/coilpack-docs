@@ -1,0 +1,295 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+
+# Channel Categories
+
+The Channel Categories tag enables you to show your Categories in a list.
+
+
+:::note
+Coilpack provides a slightly different experience for the channel categories tag when used in a Twig, Blade or GraphQL context.  See the ExpressionEngine Documentation for additional information on the [Channel Categories Tag](https://docs.expressionengine.com/latest/channels/categories.html)
+:::
+
+<Tabs>
+<TabItem value="native" label="Native">
+
+```php
+{exp:channel:categories}
+    {category_name}
+{/exp:channel:categories}
+```
+
+</TabItem>
+<TabItem value="twig" label="Twig">
+
+```twig
+{% for category in exp.channel.categories %}
+    {{ category.cat_name }}
+{% endfor %}
+```
+
+</TabItem>
+<TabItem value="blade" label="Blade">
+
+```php
+@foreach($exp->channel->categories as $category)
+    {{ $category->cat_name }}
+@endforeach
+```
+
+</TabItem>
+<TabItem value="graphql" label="GraphQL">
+
+```graphql
+{
+    exp_channel_categories {
+        data {
+            cat_name
+        }
+    }
+}
+```
+
+</TabItem>
+</Tabs>
+
+
+## Parameters
+
+The examples below are how the Channel Categories tag would look using every parameter.  Please note that this is only for illustration purposes as some of these parameters would never be used together to achieve a meaningful result.
+
+<Tabs groupId="templating-engines">
+<TabItem value="native" label="Native">
+
+```php
+{exp:channel:categories
+    category_id="2|45|4|9"
+    category="cars|sports"
+    channel="channel1|channel2"
+    group_id="4"
+    limit=1
+    site="1"
+}
+    {category_name}
+{/exp:channel:categories}
+```
+
+</TabItem>
+<TabItem value="twig" label="Twig">
+
+```twig
+{% for category in exp.channel.categories({
+    category_id: "2|45|4|9",
+    category: "cars|sports",
+    channel: "channel1|channel2",
+    group_id: "4",
+    limit: 1,
+    orderby: "cat_name",
+    search: {body: "pickles"},
+    site: "1",
+    sort: "asc",
+}) %}
+    {{ category.cat_name }}
+{% endfor %}
+```
+
+</TabItem>
+<TabItem value="blade" label="Blade">
+
+```php
+@foreach($exp->channel->categories([
+    "category_id" => "2|45|4|9",
+    "category" => "cars|sports",
+    "channel" => "channel1|channel2",
+    "group_id" => "4",
+    "limit" => 1,
+    "orderby" => "cat_name",
+    "search" => ["body" => "pickles"],
+    "site" => "1",
+    "sort" => "asc",
+]) as $category)
+    {{ $category->cat_name }}
+@endforeach
+```
+
+</TabItem>
+<TabItem value="graphql" label="GraphQL">
+
+```graphql
+{
+    exp_channel_categories(
+        category_id: "2|45|4|9",
+        category: "cars|sports",
+        channel: "channel1|channel2",
+        group_id: "4",
+        limit: 1,
+        orderby: "cat_name",
+        search: {body: "pickles"},
+        site: "1",
+        sort: "asc",
+    ) {
+        data {
+            cat_name
+        }
+    }
+}
+```
+
+</TabItem>
+</Tabs>
+
+
+### Category ID
+
+Categories are specified by ID number (the ID number of each category is displayed in the Control Panel). The reason we use the ID is because categories can be called anything (with spaces, quotes, etc.), and also renamed. It would be much more difficult to have to update the tag parameters every time you updated a category name. Further, you can have multiple categories with the same name either in different Category Groups or in different parts of the hierarchy within the same Category Group.
+
+With this parameter, you can specify which categories will be included in the list. For instance, if you wanted to keep a particular category from being listed you could specify only those you wanted displayed to be included. Category IDs are separated by the pipe character to specify more than one category.
+
+```php
+category_id: "2|45|4|9"
+```
+
+Or use "not" to exclude categories
+
+```php
+category_id: "not 4|5|7"
+```
+
+
+### Category
+
+This parameter works in the same way as `category_id` but takes the category `url_title` instead of an `id`.  Please be aware that there are pitfalls to using the `url_title` mentioned above.
+
+```php
+category: "cars|sports"
+```
+
+
+### Channel
+
+Choose which channel to show the entries (will show all channels if no channel is specified).
+
+```php
+channel: "blog"
+```
+
+Additionally, you can use the pipe character to separate multiple channels:
+
+```php
+channel: "channel1|channel2|channel3"
+```
+
+Or you can add the word "not" (with a space after it) to exclude channels:
+
+```php
+channel: "not channel1|channel2|channel3"
+```
+
+### Group ID
+
+Category Groups are specified by ID number (the ID number of each category group is displayed in the Control Panel). The reason we use the ID is because category groups can be called anything (with spaces, quotes, etc.), and also renamed. It would be much more difficult to have to update the tag parameters every time you updated a category name.
+
+```php
+category_group: "2"
+```
+
+### Limit
+
+This parameter limits the number of categories on any given page. The limit will default to all categories if a value is not specified.
+
+```php
+limit: 5
+```
+
+### Orderby
+
+The orderby parameter sets the display order of the categories.
+
+```php
+orderby: "title"
+```
+
+### Search
+
+The `search` parameter allows you to constrain Channel Categories output based on content within your fields. You specify which field to search by using the field’s short name as a key in the parameter value. You can search based on whether a field is an exact match to your provided term or whether or not a field simply contains your term.
+
+```php
+search: {body: "pickles"}
+```
+
+### Site
+
+The `site` parameter restricts the categories to your specified `site_id`.
+
+```php
+site: "1"
+```
+
+### Sort
+
+The sort order can be ascending or descending. The order will default to “descending” if nothing is specified.
+
+
+
+## Pagination
+
+Coilpack is using Laravel's Pagination library. For more information on how to customize the response please consult the [documentation on displaying pagination results](https://laravel.com/docs/8.x/pagination#displaying-pagination-results).
+
+<Tabs groupId="templating-engines">
+<TabItem value="native" label="Native">
+
+```php
+{exp:channel:categories paginate="top"}
+    {category_name}
+{/exp:channel:categories}
+```
+
+</TabItem>
+<TabItem value="twig" label="Twig">
+
+```twig
+{% set categories = exp.channel.categories({per_page:5}) %}
+{% for category in categories %}
+    {{ category.cat_name }}
+{% endfor %}
+{{ categories.links }}
+```
+
+</TabItem>
+<TabItem value="blade" label="Blade">
+
+```php
+@php
+    $categories = $exp->channel->categories(["per_page" => 5]);
+@endphp
+
+@foreach($categories as $category)
+    {{ $category->cat_name }}
+@endforeach
+
+{{ $categories->links() }}
+```
+
+</TabItem>
+<TabItem value="graphql" label="GraphQL">
+
+```graphql
+{
+    exp_channel_categories(per_page: 5) {
+        data {
+            cat_name
+        }
+        total
+        per_page
+        current_page
+        from
+        to
+        last_page
+        has_more_pages
+    }
+}
+```
+
+</TabItem>
+</Tabs>

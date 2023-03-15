@@ -2,7 +2,7 @@
 
 The current member query will retrieve fields belonging to the logged in member.
 
-```json
+```graphql
 {
     me {
         member_id

@@ -1,65 +1,69 @@
 # Channel Entries
 
-The Channel Entries query is designed to mimic the [Channel Entries Tag](../../templates/tags/channel-entries.mdx) and provide access to all of your entries and their data.
+The Channel Entries query is powered by the [Channel Entries Tag](../../templates/tags/channel-entries.mdx) and provides access to all of the same arguments.
+
+The query returns a paginated response which means you will nest all of your requested fields within a `data` field as shown in the example below.
 
 ## Example Usage
 
-```json
+```graphql
 {
-    channel_entries(channel:"about", status:"open", limit:1){
-        entry_id
-        title
-        custom_channel_field
+    exp_channel_entries(
+        category_id: "21"
+        channel: "about"
+        status: "open",
+        per_page: 2
+    ) {
+        data {
+            entry_id
+            title
+            custom_channel_field
+        }
+        total
+        per_page
+        current_page
+        from
+        to
+        last_page
+        has_more_pages
     }
 }
 ```
 
-## Arguments
-
-*Channel* - Specify the channel of the entries
-
-*Status* - Specify the status of the entries
-
-*Limit* - Limit the number of results
 
 ## Modifiers
 
 ExpressionEngine has a concept of [variable modifiers](https://docs.expressionengine.com/latest/templates/variable-modifiers.html) where you can modify the output of a variable during display.  Coilpack supports these modifiers in the context of GraphQL as arguments provided to the field you are requesting.
 
-```json
+Here is an example of using the `resize` modifier available on File fieldtypes
+
+```graphql
 {
-    channel_entries {
-        entry_id
-        about_image {
-            image(resize: {width:100}) {
-                url
-                width
-                height
+    exp_channel_entries {
+        data {
+            entry_id
+            about_image { # File Grid fieldtype
+                image(resize: {width:100}) { # File fieldtype
+                    url
+                    width
+                    height
+                }
+                caption
+                align
             }
-            caption
-            align
         }
     }
 }
 ```
 
-```json
+And here is an example of using the `length` modifier available on most fieldtypes.
+
+```graphql
 {
-    channel_entries{
+    exp_channel_entries {
         entry_id
         title
         page_content(length:true)
     }
-}
-```
-
-## Single Channel Entry
-
-```json
-{
-    channel_entry(entry_id:1) {
-        entry_id
-        title
-	}
 }
 ```

@@ -4,7 +4,7 @@ The global variables query provides access to any values defined in a global var
 
 ## Example Usage
 
-```json
+```graphql
 {
     variables {
         site_short_name
