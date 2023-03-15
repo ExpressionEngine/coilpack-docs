@@ -122,6 +122,9 @@ const config = {
         prism: {
             theme: lightCodeTheme,
             darkTheme: darkCodeTheme,
+            // Unfortunately Twig isn't this easy to support
+            // https://github.com/facebook/docusaurus/issues/8065
+            // additionalLanguages: ['twig'],
         },
     }),
 };
