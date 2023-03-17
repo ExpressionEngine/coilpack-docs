@@ -6,23 +6,21 @@ Multi Select Fields allow publishers to choose multiple items from a list.
 
 You can use a single variable for Multi Select to render a comma-separated list of the labels.
 
-```
+```twig
 {{ entry.multi_select }}
-```
 
-### Variable Pair
+{% for label, value in entry.multi_select.options %}
+    {{ label }} - {{ value }}
+{%endfor}
 
-Using a variable pair, allows for customization of the output.
-
-```
-{% for option in entry.multi_select %}
-    {{ option }}
-{% endfor %}
+{% for label, value in entry.multi_select.selected %}
+    {{ label }} - {{ value }}
+{%endfor}
 ```
 
 ## Parameters
 
-```
+```twig
 {{ entry.multi_select.parameters({limit: 1, markup: 'ul'}) }}
 ```
 

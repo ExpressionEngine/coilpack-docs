@@ -6,31 +6,29 @@ Checkboxes allow publishers to choose multiple items from a list.
 
 You can use a single variable for Checkboxes to render a comma-separated list of the labels.
 
-```
+```twig
 {{ entry.checkbox_field }}
-```
 
-### Variable Pair
+{% for label, value in entry.checkbox_field.options %}
+    {{ label }} - {{ value }}
+{%endfor}
 
-Using a variable pair, allows for customization of the output.
-
-```
-{% for value in entry.checkbox_field %}
-    {{ value }}
-{% endfor %}
+{% for label, value in entry.checkbox_field.selected %}
+    {{ label }} - {{ value }}
+{%endfor}
 ```
 
 ## Parameters
 
 ### Limit
 
-```
+```twig
 {{ entry.checkbox_field.parameters({limit: 1}) }}
 ```
 
 ### Markup
 
-```
+```twig
 {{ entry.checkbox_field.parameters({markup: 'ul'}) }}
 ```
 

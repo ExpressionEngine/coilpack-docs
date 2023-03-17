@@ -1,7 +1,13 @@
 # Toggle
 
-```
+```twig
 {{ entry.toggle }}
+
+{% if entry.toggle %}
+    Yes
+{% else %}
+    No
+{% endif %}
 ```
 
 :::info

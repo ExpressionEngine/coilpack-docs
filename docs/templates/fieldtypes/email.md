@@ -2,15 +2,15 @@
 
 Email Address is a field type for storing email addresses.
 
-```
+```twig
 {{ entry.email_address }}
 ```
 
 ## Modifiers
 
 ### Mailto
-```
-{{ entry.checkbox_field.mailto({title: 'Test', subject: 'Testing', encode: false}) }}
+```twig
+{{ entry.email_address.mailto({title: 'Test', subject: 'Testing', encode: false}) }}
 ```
 
 :::info

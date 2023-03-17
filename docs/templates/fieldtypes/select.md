@@ -2,14 +2,22 @@
 
 Select Dropdown fields allow publishers to choose a single item from a dropdown list.
 
-```
+```twig
 {{ entry.select }}
+
+{% for label, value in entry.select.options %}
+    {{ label }} - {{ value }}
+{%endfor}
+
+{% for label, value in entry.select.selected %}
+    {{ label }} - {{ value }}
+{%endfor}
 ```
 
 ## Parameters
 
 ```
-{{ entry.select.parameters({limit: 1, markup: 'ul'}) }}
+{{ entry.select.parameters({markup: 'ul'}) }}
 ```
 
 :::info

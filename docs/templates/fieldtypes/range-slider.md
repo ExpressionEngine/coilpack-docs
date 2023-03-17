@@ -2,20 +2,20 @@
 
 The Range Slider fieldtype allows the user to select numerical value. It is rendered as range HTML input type with some additional styling, allowing users to precisely select the value.
 
-```
+```twig
 {{ entry.range }}
 ```
 
 ## Variables
 
-```
+```twig
 {{ entry.range.from }}
 {{ entry.range.to }}
 ```
 
 ## Parameters
 
-```
+```twig
 {{ entry.range.parameters({decimal_place: '2', prefix: 'yes', suffix: 'yes'}) }}
 ```
 

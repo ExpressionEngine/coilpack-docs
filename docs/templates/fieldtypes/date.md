@@ -2,13 +2,13 @@
 
 Date fields render as regular date variables:
 
-```
+```twig
 {{ entry.date }}
 ```
 
 ## Parameters
 
-```
+```twig
 {{ entry.date.parameters({format: '%m/%d/%Y', timezone: 'UTC'}) }}
 ```
 

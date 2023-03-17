@@ -2,13 +2,13 @@
 
 File fields utilize the built-in file browser to store uploaded files and images for your publishers.
 
-```
+```twig
 {{ entry.file }}
 ```
 
 ## Variables
 
-```
+```twig
 {{ entry.file.credit }}
 {{ entry.file.description }}
 {{ entry.file.directory_id }}
@@ -31,35 +31,40 @@ File fields utilize the built-in file browser to store uploaded files and images
 
 ## Parameters
 
-```
+```twig
 {{ entry.file.parameters({wrap: 'link'}) }}
 ```
 
 ## Modifiers
 
 ### Rotate
-```
+```twig
 {{ entry.file.rotate({angle: 90}) }}
 ```
 
 ### Crop
-```
+```twig
 {{ entry.file.crop({width: 100, height: 100}) }}
 ```
 
 ### Resize
-```
+```twig
 {{ entry.file.resize({width: 100, height: 100}) }}
 ```
 
 ### WebP
-```
+```twig
 {{ entry.file.webp({width: 100, height: 100}) }}
 ```
 
 ### Resize And Crop
-```
+```twig
 {{ entry.file.resize_crop({'resize:width': 100, 'crop:width': 100}) }}
+```
+
+### Pre-defined Manipulation
+```twig
+{{ entry.file.manipulation('manipulation_name') }}
 ```
 
 :::info

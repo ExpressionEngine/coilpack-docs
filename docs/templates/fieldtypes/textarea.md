@@ -1,9 +1,9 @@
-# Text
+# Textarea
 
-Text Input is a single-lined free-form writing space where you can enter text or HTML.
+The Textarea is a simple free-form writing space where you can enter text or HTML.
 
 ```twig
-{{ entry.text }}
+{{ entry.textarea }}
 ```
 
 :::info

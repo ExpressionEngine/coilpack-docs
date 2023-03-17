@@ -2,13 +2,13 @@
 
 Number Input is a single-lined field where you can enter a number. Its also shows up and down arrows to change the value as provided by HTML number input rendered in browser.
 
-```
+```twig
 {{ entry.number }}
 ```
 
 ## Parameters
 
-```
+```twig
 {{ entry.number.parameters({decimal_places: 2}) }}
 ```
 
