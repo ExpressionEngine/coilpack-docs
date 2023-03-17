@@ -17,6 +17,7 @@ export default function prismIncludeLanguages(PrismObject) {
   });
 
   require('../prism/prism-twig');
+  require('../prism/prism-php');
 
 //   delete globalThis.Prism;
 }

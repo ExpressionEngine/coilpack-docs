@@ -123,8 +123,9 @@ const config = {
             theme: lightCodeTheme,
             darkTheme: darkCodeTheme,
             // Unfortunately Twig isn't this easy to support
+            // https://github.com/facebook/docusaurus/issues/6963
             // https://github.com/facebook/docusaurus/issues/8065
-            // additionalLanguages: ['twig'],
+            // additionalLanguages: ['php','twig'],
         },
     }),
 };
