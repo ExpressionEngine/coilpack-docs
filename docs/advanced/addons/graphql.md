@@ -62,7 +62,7 @@ You can also define a different `resolve()` function in the `toGraphQL()` return
 
 ## GraphQL Type
 
-You will need to create a new class to represent the return type for your query.
+You will need to create a new class to represent the return type for your query.  This will involve giving the type a unique name and listing out the fields that will be returned along with their types.
 
 ```php
 use GraphQL\Type\Definition\Type;
@@ -80,6 +80,7 @@ class MyAddonTagType extends GraphQLType {
         return [
             'field_name' => [
                 'type' => Type::string()
+                'description' => 'A description of the field'
             ]
         ];
     }
