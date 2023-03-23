@@ -1,0 +1,325 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+
+# Structure Nav
+
+Coilpack's Structure Nav tag provides a structured tree with full access to the channel entry data at each level.
+
+:::note
+This is a different experience than the original ExpressionEngine tag so please be sure to read the examples carefully.
+:::
+
+## Usage
+
+If you want to display a few levels of your tree it might be simplest and most straightforward to loop over the tag output.
+
+<Tabs>
+<TabItem value="twig" label="Twig">
+
+```twig
+{% for item in exp.structure.nav({
+    status: 'open|closed',
+    show_depth: 2,
+}) %}
+    <a href="{{ item.structure_url_title }}">{{ item.entry.title }}</a>
+    {% if item.children|length %}
+        <ul>
+            {% for child in item.children %}
+                <li>
+                    <a href="{{ child.structure_url_title }}">{{ child.entry.title }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endfor %}
+```
+
+</TabItem>
+<TabItem value="blade" label="Blade">
+
+```php
+@foreach(exp.structure.nav({
+    status: 'open|closed',
+    show_depth: 2,
+}) as $item)
+    <a href="{{ $item['structure_url_title'] }}">{{ $item['entry']['title'] }}</a>
+    @if(count(item.children))
+        <ul>
+            @foreach($item['children'] as $child)
+                <li>
+                    <a href="{{ $child['structure_url_title'] }}">{{ $child['entry']['title'] }}</a>
+                </li>
+            @endforeach
+        </ul>
+    @endif
+@endforeach
+```
+
+</TabItem>
+<TabItem value="graphql" label="GraphQL">
+
+```graphql
+{
+    exp_structure_nav(
+        status: "open|closed",
+        show_depth: 2
+    ) {
+        structure_url_title
+        entry {
+            title
+        }
+        children {
+            structure_url_title
+            entry {
+                title
+            }
+        }
+    }
+}
+```
+
+</TabItem>
+</Tabs>
+
+
+
+### Twig
+
+A good way to display all levels of our navigation tree in Twig is by defining a macro and calling it recursively for all of the children.
+
+```twig
+{% macro showNav(item) %}
+    {% import _self as self %}
+    <li>
+        <a href="{{ item.structure_url_title }}">{{ item.entry.title }}</a>
+        {% if item.children|length %}
+            <ul>
+                {% for child in item.children %}
+                    {{ self.showNav(child) }}
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </li>
+{% endmacro %}
+
+{% from _self import showNav %}
+
+{% for item in exp.structure.nav({
+    status: 'open|closed',
+    show_depth: 2,
+}) %}
+    <ul>
+        {{ showNav(item) }}
+    </ul>
+{% endfor %}
+```
+
+### Blade
+
+In Blade we can use some PHP code to simplify recursively displaying the navigation tree.
+
+```php
+<ul>
+    {!!
+        $exp->structure->nav([
+            'status' => 'open|closed',
+            'show_depth' => 2,
+        ])->render(function($item, $children, $depth) {
+            return implode('', [
+                '<li>',
+                '<a href="'.$item['structure_url_title'].'">'.$item['entry']['title'].'</a>',
+                $children ? '<ul>'.$children.'</ul>' : '',
+                '</li>'
+            ]);
+        })
+    !!}
+</ul>
+```
+
+## Parameters
+
+<Tabs>
+<TabItem value="native" label="Native">
+
+```php
+{exp:structure:nav
+    start_from="/some-url"
+    strict_start_from="yes"
+    show_depth=3
+    max_depth=4
+    status="closed"
+    include="1|3|5"
+    exclude="2|4|6"
+    show_expired="yes"
+    show_future_entries="yes"
+    override_hidden_state="yes"
+    site_url="yes"
+}
+```
+
+</TabItem>
+<TabItem value="twig" label="Twig">
+
+```twig
+{% for item in exp.structure.nav({
+    start_from: "/some-url",
+    strict_start_from: "yes",
+    show_depth: 3,
+    max_depth: 4,
+    status: "closed",
+    include: "1|3|5",
+    exclude: "2|4|6",
+    show_expired: "yes",
+    show_future_entries: "yes",
+    override_hidden_state: "yes",
+    site_url: "yes"
+}) %}
+    {{ item.children }}
+    {{ item.depth }}
+    {{ item.entry }}
+    {{ item.hidden }}
+    {{ item.slug }}
+    {{ item.structure_url_title }}
+{% endfor %}
+```
+
+</TabItem>
+<TabItem value="blade" label="Blade">
+
+```php
+@foreach($exp->structure->nav([
+    "start_from" => "/some-url",
+    "strict_start_from" => "yes",
+    "show_depth" => 3,
+    "max_depth" => 4,
+    "status" => "closed",
+    "include" => "1|3|5",
+    "exclude" => "2|4|6",
+    "show_expired" => "yes",
+    "show_future_entries" => "yes",
+    "override_hidden_state" => "yes",
+    "site_url" => "yes"
+]) as $item)
+    {{ $item['children'] }}
+    {{ $item['depth'] }}
+    {{ $item['entry'] }}
+    {{ $item['hidden'] }}
+    {{ $item['slug'] }}
+    {{ $item['structure_url_title'] }}
+@endforeach
+```
+
+</TabItem>
+<TabItem value="graphql" label="GraphQL">
+
+```graphql
+{
+    exp_structure_nav(
+        start_from: "/some-url",
+        strict_start_from: "yes",
+        show_depth: 3,
+        max_depth: 4,
+        status: "closed",
+        include: "1|3|5",
+        exclude: "2|4|6",
+        show_expired: "yes",
+        show_future_entries: "yes",
+        override_hidden_state: "yes",
+        site_url: "yes"
+    ) {
+        children {
+            ...
+        }
+        depth
+        entry {
+            title
+        }
+        hidden
+        slug
+        structure_url_title
+    }
+}
+```
+
+</TabItem>
+</Tabs>
+
+
+### Start From
+Full URI used to indicate where to begin revealing children.
+
+```php
+start_from: "/some-url"
+```
+
+### Strict Start From
+Will NOT return a nav if there is no match to your "start_from" parameter. Normally, if there is no match, Structure returns the full nav starting from the base of your website.
+
+```php
+strict_start_from: "yes"
+```
+
+### Show Depth
+Reveals XX levels deep for ALL children pages of the current start_from parameter.
+
+```php
+show_depth: 3
+```
+
+### Max Depth
+Only show up to X levels deep from the current start_from parameter.
+
+```php
+max_depth: 4
+```
+
+### Status
+Restrict pages by status. When prefixed with "not" all entries except those are available.
+
+```php
+status: "closed"
+```
+
+### Include
+Selectively show specific pages from the same level.
+
+```php
+include: "1|3|5"
+```
+
+### Exclude
+Used to hide any single or multiple user defined entry numbers using the pipe character. All children under a specified ID will be hidden as well.
+
+```php
+exclude: "2|4|6"
+```
+
+### Show Expired
+Allows you to show or not show expired entries within the navigation tree.
+
+```php
+show_expired: "yes"
+```
+
+### Show Future Entries
+Allows you to show or not show future entries within the navigation tree.
+
+```php
+show_future_entries: "yes"
+```
+
+### Override Hidden State
+Show all pages regardless of whether they're set to be hidden from the nav.
+
+```php
+override_hidden_state: "yes"
+```
+
+### Site URL
+Include the absolute site URL in your nav links instead of relative links.
+
+```php
+site_url: "yes"
+```
+
