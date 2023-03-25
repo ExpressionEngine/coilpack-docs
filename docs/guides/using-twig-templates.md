@@ -25,7 +25,7 @@ Once you have a site with content we can create another Twig template to demonst
 Create a new file at `/ee/system/user/templates/default_site/example.group/entry.html.twig`.  The following is an example of how we might fetch an entry and display the default `title` and `date` fields along with two custom fields. We have a File field named `featured_image` and an RTE field named `page_content`.
 
 ```twig
-{% set entry = exp.channel.entries({limit:1}) %}
+{% set entry = exp.channel.entries({limit:1}).first() %}
 <html>
     <head>
         <title>{{ entry.title }} | {{ global.site_name }}</title>

@@ -28,7 +28,7 @@ You would do this by creating a file at `user/templates/blog.group/index.html.tw
 
 If you manage your templates inside your Laravel application you will just need to create files in your `resources/views` folder with either a `.twig` or a `.blade.php` extension and include them with the `view()` helper.  The Laravel documentation is a great resource for [learning more about views](https://laravel.com/docs/9.x/views#introduction).
 
-## Using ExpressionEngine Tags
+## Template Tag Syntax
 
 Coilpack aims to maintain a familiar syntax with native ExpressionEngine templates in both Twig and Blade.  Here is a simple example of how a module tag would be rendered in each of the available template engines.
 
@@ -109,9 +109,90 @@ In ExpressionEngine much of our content is retrieved through the Channel Entries
 </Tabs>
 
 
-## Referencing other templates from inside Twig and Blade
+## Referencing other templates
 
-Both and Twig and Blade provide methods for including other template files.  When you do this with files inside your `user/templates` folder you will need to include the `ee::` namespace in the path.  For instance if we want to include a partial inside a Twig view we would write `{% include('ee::folder._partial') %}`
+Both and Twig and Blade provide methods for including other template files.  When you do this with files inside your `user/templates` folder you will need to include the `ee::` namespace in the path.
+
+For instance if we want to `extend` a layout or `include` a partial we would write:
+
+
+<Tabs>
+<TabItem value="twig" label="Twig">
+
+```twig
+{% extends 'ee::folder._layout' %}
+
+{% include 'ee::folder._partial' %}
+```
+
+</TabItem>
+<TabItem value="blade" label="Blade">
+
+```php
+@extends('ee::folder._layout')
+
+@include('ee::folder._partial')
+```
+
+</TabItem>
+</Tabs>
+
+
+:::tip
+It is convention within ExpressionEngine to prefix a template name with an underscore when it should be 'private' and not accessible through the typical template routing.  That means our example template `folder/_partial` would not be visible at http:://site-url.test/folder/_partial
+:::
+
+## Embedding Native templates
+
+It is also possible to embed a native ExpressionEngine template inside of a Twig or Blade template.  Just specify the `template_group/template` path and optionally pass an obje
+
+<Tabs>
+<TabItem value="twig" label="Twig">
+
+```twig
+{{ exp.embed('_partials/header', {title: 'Embed Variable'}) }}
+```
+
+</TabItem>
+<TabItem value="blade" label="Blade">
+
+```php
+{{ $exp->embed('_partials/header', ['title' => 'Embed Variable']) }}
+```
+
+</TabItem>
+</Tabs>
+:::note
+You should not prefix the path for native templates you are embedding
+:::
+
+## Embedding Twig and Blade from Native
+
+Since Coilpack is augmenting the behavior of the Template parser it is also possible to embed a Twig or Blade template within your native ExpressionEngine templates.
+
+```php
+{embed="template_group/twig_template" title="Embed Variable"}
+```
+
+You can access embed variables within Twig and Blade like this:
+
+<Tabs>
+<TabItem value="twig" label="Twig">
+
+```twig
+<h1>{{ embed.title }}</h1>
+```
+
+</TabItem>
+<TabItem value="blade" label="Blade">
+
+```php
+<h1>{{ $embed['title'] }}</h1>
+```
+
+</TabItem>
+</Tabs>
+
 
 ## Global Variables
 
