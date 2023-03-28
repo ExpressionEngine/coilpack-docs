@@ -63,7 +63,7 @@ The GraphQL integration's behavior can be configured in the `config/coilpack.php
 
 ## Tools
 
-You can interact with your site's GraphQL endpoints by using the built-in GraphiQL tool at `/graphiql`.  Once GraphQL is enabled this endpoint is available by default.  However you may wish to disable this endpoint once your site is deployed to production.
+You can interact with your site's GraphQL endpoints by using the built-in GraphiQL tool at `/graphiql`.  Once GraphQL is enabled this endpoint can be made available by adding `COILPACK_GRAPHIQL_ENABLED=true` to your Laravel `.env` file.
 
 Alternatively we recommend using [GraphQL Playground](https://github.com/graphql/graphql-playground) or [Insomnia](https://insomnia.rest/) to test your queries.
 

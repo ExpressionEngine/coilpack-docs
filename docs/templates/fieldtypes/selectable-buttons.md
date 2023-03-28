@@ -1,5 +1,7 @@
 # Selectable Buttons
 
+Selectable Button fields allow publishers to choose either multiple or single items from a list depending on the setting.
+
 ```twig
 {{ entry.buttons }}
 

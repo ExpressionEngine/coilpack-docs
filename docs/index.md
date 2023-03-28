@@ -27,6 +27,10 @@ We chose to build Coilpack as a separate package so that ExpressionEngine could 
 
 Packet Tide has been working with Laravel since version 4 which was released almost 10 years ago.  Our experience with the framework is the main reason we chose Laravel along with how easy it makes writing clean expressive code.  This project is completely open source and if somebody wants to fork it and convert Laravel bindings and service providers into another framework that is totally fine.  We may work on extracting pieces into a more framework agnostic package but we believe this was our fastest and most effective way to bring this functionality to our customer base.
 
+**Will this detract from development of ExpressionEngine**
+
+No, it's important to remember that Coilpack serves the purpose of connecting ExpressionEngine to additional services through Laravel.  We are trying to keep the Coilpack layer as thin as possible so that most business logic changes are reflected in the core of ExpressionEngine.  This ensures that changes and improvements are available to all ExpressionEngine users and not just those using Coilpack.
+
 ## Known Issues
 
 - Using Laravel Telescope will register a wildcard event listener that conflicts with how we translate ExpressionEngine extensions into Laravel Events.  For now we recommend setting `TELESCOPE_EVENT_WATCHER=false` in your .env file otherwise your site may not render properly.

@@ -180,6 +180,9 @@ In Blade we can use some PHP code to simplify recursively displaying the navigat
     {{ item.entry }}
     {{ item.hidden }}
     {{ item.slug }}
+    {{ item.url }}
+    {{ item.uri }}
+    {{ item.active }}
     {{ item.structure_url_title }}
 {% endfor %}
 ```
@@ -206,6 +209,9 @@ In Blade we can use some PHP code to simplify recursively displaying the navigat
     {{ $item['entry'] }}
     {{ $item['hidden'] }}
     {{ $item['slug'] }}
+    {{ $item['url'] }}
+    {{ $item['uri'] }}
+    {{ $item['active'] }}
     {{ $item['structure_url_title'] }}
 @endforeach
 ```
@@ -237,6 +243,9 @@ In Blade we can use some PHP code to simplify recursively displaying the navigat
         }
         hidden
         slug
+        url
+        uri
+        active
         structure_url_title
     }
 }

@@ -20,13 +20,17 @@ If you pass the parameter text_only="yes" to RTE template tags, all HTML tags wi
 
 If you just want to remove the images, but leave the rest of the HTML markup in place, you can use the `remove_images` parameter instead.
 
+```twig
 {{ entry.rte_field.parameters({remove_images: "yes"}) }}
+```
 
 ### Images Only
 
 You can use the parameter `images_only` to remove everything but the images from the content.
 
+```twig
 {{ entry.rte_field.parameters({images_only: "yes"}) }}
+```
 
 
 ## Modifiers
