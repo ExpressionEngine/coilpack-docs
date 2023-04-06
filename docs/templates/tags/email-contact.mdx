@@ -1,35 +1,106 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # Email Contact Form
 
+The purpose of this tag is to create a contact form on one of your pages that your users can use to send you email.
 
-## Example
+For full documentation of available parameters please see the [ExpressionEngine Documentation](https://docs.expressionengine.com/latest/add-ons/email.html#email-contact-form).
 
-```php
-exp.email.contact_form
-```
-
-## Parameters
-
-### Return
-
-This parameter lets you specify a path (or full URL) where the user should be directed after the form is submitted. Upon submission, the user is presented with a standard “thank you” message and a link. If this parameter is not used, then the link will point to the page they were on prior to arriving at the email form.
+<Tabs>
+<TabItem value="native" label="Native">
 
 ```php
-exp.email.contact_form({return: 'email/thanks'})
+{exp:email:contact_form user_recipients="no" recipients="admin@example.com" charset="utf-8"}
+    <h2>Support Form</h2>
+    <p>
+        <label for="from">Your Email:</label><br />
+        <input type="text" id="from" name="from" size="40" maxlength="35" value="{member_email}" />
+    </p>
+    <p>
+        <label for="subject">Subject:</label><br />
+        <input type="text" id="subject" name="subject" size="40" value="Contact Form" />
+    </p>
+    <p>
+        <label for="message">Message:</label><br />
+        <textarea id="message" name="message" rows="18" cols="40">
+            Support Email from: {member_name}
+            Sent at:  {current_time format="%Y %m %d"}
+        </textarea>
+    </p>
+    <p>
+        <input name="submit" type='submit' value='Submit Form' />
+    </p>
+{/exp:email:contact_form}
 ```
 
-### Form Class
+</TabItem>
+<TabItem value="twig" label="Twig">
 
-With this parameter, you can specify the css class you want the form to have, enabling fine-grained styling of the form.
+```twig
+{% set form = exp.email.contact_form({
+    user_recipients: 'no',
+    recipients: 'admin@example.com',
+    charset: 'utf-8'
+}) %}
+
+{{ form.open() | raw }}
+<h2>Support Form</h2>
+<p>
+	<label for="from">Your Email:</label><br/>
+	<input type="text" id="from" name="from" size="40" maxlength="35" value="{{ form.member_email }}"/>
+</p>
+<p>
+	<label for="subject">Subject:</label><br/>
+	<input type="text" id="subject" name="subject" size="40" value="Contact Form"/>
+</p>
+<p>
+	<label for="message">Message:</label><br/>
+	<textarea id="message" name="message" rows="18" cols="40">
+    Support Email from: {{ form.member_name }}
+    Sent at:  {{ form.current_time.format("Y-m-d") }}
+	</textarea>
+</p>
+<p>
+	<input name="submit" type='submit' value='Submit Form'/>
+</p>
+{{ form.close() | raw }}
+```
+
+</TabItem>
+<TabItem value="blade" label="Blade">
 
 ```php
-exp.email.contact_form({form_class: 'contact-form'})
+@php
+$form = $exp->email->contact_form({
+    user_recipients: 'no',
+    recipients: 'admin@example.com',
+    charset: 'utf-8'
+})
+@endphp
+
+{!! $form->open() !!}
+<h2>Support Form</h2>
+<p>
+	<label for="from">Your Email:</label><br/>
+	<input type="text" id="from" name="from" size="40" maxlength="35" value="{{ $form->member_email }}"/>
+</p>
+<p>
+	<label for="subject">Subject:</label><br/>
+	<input type="text" id="subject" name="subject" size="40" value="Contact Form"/>
+</p>
+<p>
+	<label for="message">Message:</label><br/>
+	<textarea id="message" name="message" rows="18" cols="40">
+    Support Email from: {{ $form->member_name }}
+    Sent at:  {{ $form->current_time->format("Y-m-d") }}
+	</textarea>
+</p>
+<p>
+	<input name="submit" type='submit' value='Submit Form'/>
+</p>
+{!! $form->close() !!}
 ```
 
-### Form ID
-
-With this parameter, you can specify the css id you want the form to have. The default value is ‘contact_form’.
-
-
-```php
-exp.email.contact_form({form_id: 'contact_form'})
-```
+</TabItem>
+</Tabs>

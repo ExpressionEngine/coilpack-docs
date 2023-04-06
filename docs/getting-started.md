@@ -40,8 +40,8 @@ To use Coilpack You will need a development environment with PHP >= 7.4.0 and Co
 composer create-project --prefer-dist laravel/laravel:^8.0 project-name
 ```
 
-:::info
-Be sure to setup your webserver to point to the `public` folder inside your Laravel project. Laravel Valet and Laravel Sail will do this automatically.
+:::caution
+You must set your webserver's document root to point to the `public` folder inside your Laravel project. Laravel Valet and Laravel Sail will do this automatically.
 :::
 
 **Configure your Laravel Project**
