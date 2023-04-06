@@ -65,12 +65,12 @@ If you want to display a few levels of your tree it might be simplest and most s
         status: "open|closed",
         show_depth: 2
     ) {
-        structure_url_title
+        url
         entry {
             title
         }
         children {
-            structure_url_title
+            url
             entry {
                 title
             }
@@ -92,7 +92,7 @@ A good way to display all levels of our navigation tree in Twig is by defining a
 {% macro showNav(item) %}
     {% import _self as self %}
     <li>
-        <a href="{{ item.structure_url_title }}">{{ item.entry.title }}</a>
+        <a href="{{ item.url }}">{{ item.entry.title }}</a>
         {% if item.children|length %}
             <ul>
                 {% for child in item.children %}
@@ -128,7 +128,7 @@ In Blade we can use some PHP code to simplify recursively displaying the navigat
         ])->render(function($item, $children, $depth) {
             return implode('', [
                 '<li>',
-                '<a href="'.$item['structure_url_title'].'">'.$item['entry']['title'].'</a>',
+                '<a href="'.$item['url'].'">'.$item['entry']['title'].'</a>',
                 $children ? '<ul>'.$children.'</ul>' : '',
                 '</li>'
             ]);
