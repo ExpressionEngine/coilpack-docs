@@ -22,12 +22,12 @@ If you want to display a few levels of your tree it might be simplest and most s
     status: 'open|closed',
     show_depth: 2,
 }) %}
-    <a href="{{ item.structure_url_title }}">{{ item.entry.title }}</a>
+    <a href="{{ item.url }}">{{ item.entry.title }}</a>
     {% if item.children|length %}
         <ul>
             {% for child in item.children %}
                 <li>
-                    <a href="{{ child.structure_url_title }}">{{ child.entry.title }}</a>
+                    <a href="{{ child.url }}">{{ child.entry.title }}</a>
                 </li>
             {% endfor %}
         </ul>
@@ -43,12 +43,12 @@ If you want to display a few levels of your tree it might be simplest and most s
     status: 'open|closed',
     show_depth: 2,
 }) as $item)
-    <a href="{{ $item['structure_url_title'] }}">{{ $item['entry']['title'] }}</a>
+    <a href="{{ $item['url'] }}">{{ $item['entry']['title'] }}</a>
     @if(count(item.children))
         <ul>
             @foreach($item['children'] as $child)
                 <li>
-                    <a href="{{ $child['structure_url_title'] }}">{{ $child['entry']['title'] }}</a>
+                    <a href="{{ $child['url'] }}">{{ $child['entry']['title'] }}</a>
                 </li>
             @endforeach
         </ul>

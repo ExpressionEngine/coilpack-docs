@@ -10,13 +10,13 @@ For the purposes of this guide we are also going to disable any authentication r
 
 ## Create a Gatsby Site
 
-Create a new site (skipping the wizard questions)
+Now we will create a new Gatsby site.  You can perform this setup anywhere but it should be in a different directory than your Coilpack installation.
 
 ```
 npm init gatsby my-coilpack-site -- -y
 ```
 
-Change into your new site's directory
+Change into your new Gatsby site's directory
 
 ```
 cd my-coilpack-site

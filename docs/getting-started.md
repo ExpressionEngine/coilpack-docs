@@ -44,6 +44,13 @@ composer create-project --prefer-dist laravel/laravel:^8.0 project-name
 You must set your webserver's document root to point to the `public` folder inside your Laravel project. Laravel Valet and Laravel Sail will do this automatically.
 :::
 
+:::tip
+It can be helpful to tell Composer which version of PHP you're targeting.  This is especially important in a development environment where your webserver's PHP version may be different than the CLI.
+
+To do this run: `composer config platform.php 8.0` substituting `8.0` for whichever version you are using.
+
+:::
+
 **Configure your Laravel Project**
 
 Now that you have a Laravel Project setup it is a good time to edit the values in your `.env` file to reflect your setup.  The `APP_URL` and `DB_*` variables are particularly important.

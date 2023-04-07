@@ -10,7 +10,7 @@ For the purposes of this guide we are also going to disable any authentication r
 
 ## Create an Astro Site
 
-Start the installer wizard
+Now we will create a new Astro site.  You can perform this setup anywhere but it should be in a different directory than your Coilpack installation.
 
 ```
 npm create astro@latest
@@ -33,9 +33,10 @@ Do you plan to write TypeScript?
 Liftoff confirmed. Explore your project!
 ```
 
-Once the installation is complete you can start the live reload development server
+Once the installation is complete you can change into the Astro project directory and start the live reload development server.
 
 ```
+cd astro-project-folder
 npm run dev
 ```
 
