@@ -60,6 +60,8 @@ Now that you have a Laravel Project setup it is a good time to edit the values i
 Inside of your Laravel project, you will need to update your project to use the Coilpack package.
 
 ```
+cd project-name
+
 composer require expressionengine/coilpack:0.x-dev
 ```
 

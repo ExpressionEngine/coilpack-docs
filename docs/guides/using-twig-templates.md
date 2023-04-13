@@ -32,7 +32,7 @@ Create a new file at `/ee/system/user/templates/default_site/example.group/entry
     </head>
     <body>
         <h1>{{ entry.title }}</h1>
-        <span>Published on {{ entry.date }}
+        <span>Published on {{ entry.entry_date }}</span>
         <img src="{{ entry.featured_image }}" />
         {{ entry.page_content | raw}}
     </body>
