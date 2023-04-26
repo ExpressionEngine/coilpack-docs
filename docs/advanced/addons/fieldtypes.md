@@ -44,14 +44,14 @@ class SuperCheckbox extends Fieldtype
 
 Typically a fieldtype doesn't need to define parameters up front as they are evaluated dynamically and checked for values at runtime.  If you would like to support GraphQL with your fieldtype it is important to list out your parameters so the schema can be generated properly.
 
-Coilpack provides a method `parameters()` for defining which parameters your fieldtype supports.  This method will also pass along the field using the fieldtype so you can generate parameters specifically for it.  However, this should only be necessary for more complicated fieldtypes like Grid.
+Coilpack provides a method `parametersForField()` for defining which parameters your fieldtype supports.  This method will also pass along the field using the fieldtype so you can generate parameters specifically for it.  However, this should only be necessary for more complicated fieldtypes like Grid.
 
 ```php
     use Expressionengine\Coilpack\Contracts\Field;
 
     ...
 
-    public function parameters(Field $field = null): array
+    public function parametersForField(Field $field = null): array
     {
         return [
             new Expressionengine\Coilpack\Support\Parameter([
