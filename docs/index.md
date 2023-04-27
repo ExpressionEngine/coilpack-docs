@@ -1,7 +1,5 @@
 # Coilpack
 
-*Currently in Beta*
-
 Coilpack is a composer package that lets you harness the powerful Laravel ecosystem to bring your ExpressionEngine content forward in exciting new ways.  Once installed in a standard Laravel application Coilpack loads ExpressionEngine and integrates many core services.
 
 ## Feature Highlights
@@ -15,7 +13,7 @@ Coilpack is a composer package that lets you harness the powerful Laravel ecosys
 
 ## Changelog
 
-To view a list of changes in the project please visit the [current changelog](https://github.com/ExpressionEngine/Coilpack/blob/0.x/CHANGELOG.md).
+To view a list of changes in the project please visit the [current changelog](https://github.com/ExpressionEngine/Coilpack/blob/1.x/CHANGELOG.md).
 
 ## Frequently Asked Questions
 

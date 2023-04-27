@@ -13,7 +13,7 @@ If you are new to Laravel and Coilpack we strongly recommend you follow the rest
 ```sh
 composer create-project --prefer-dist laravel/laravel project-name
 cd project-name
-composer require expressionengine/coilpack:0.x-dev
+composer require expressionengine/coilpack:1.x
 php artisan coilpack
 ```
 
@@ -34,7 +34,7 @@ To use Coilpack You will need a development environment with PHP >= 7.4.0 and Co
 
 ### Create A Laravel Project
 
-```
+```sh
 composer create-project --prefer-dist laravel/laravel:^8.0 project-name
 ```
 
@@ -50,16 +50,24 @@ To do this run: `composer config platform.php 8.0` substituting `8.0` for the ve
 
 ### Configure your Laravel Project
 
-Now that you have a Laravel Project setup it is a good time to edit the values in your `.env` file to reflect your setup.  The `APP_URL` and `DB_*` variables are particularly important for later steps in the Coilpack setup.
+Now that you have a Laravel Project setup it is a good time to edit the values in your `.env` file to reflect your setup.  The `APP_URL` and `DB_*` variables are particularly important for later steps in the Coilpack setup.  The values you choose might look something like this:
+
+```sh
+APP_URL=https://project-name.test
+DB_HOST=127.0.0.1
+DB_DATABASE=project_name_database
+DB_USERNAME=root
+DB_PASSWORD=
+```
 
 ### Require Coilpack
 
 Inside of your Laravel project, you will need to update your project to use the Coilpack package.
 
-```
+```sh
 cd project-name
 
-composer require expressionengine/coilpack:0.x-dev
+composer require expressionengine/coilpack:1.x
 ```
 
 ### Run Coilpack Setup
@@ -68,7 +76,7 @@ During the setup process you may choose to install a new copy of ExpressionEngin
 
 From inside of your Laravel project, run the Coilpack setup.
 
-```
+```sh
 php artisan coilpack
 ```
 
