@@ -32,7 +32,7 @@ If you are retrieving more than a single model and intend to use these custom fi
 Accessing the custom fields can be done right from the parent model like this:
 
 ```php
-use \Expressionengine\Coilpack\Models\ChannelEntry;
+use \Expressionengine\Coilpack\Models\Channel\ChannelEntry;
 
 $entry = ChannelEntry::find(1);
 
@@ -51,7 +51,7 @@ $value = $customField->value();
 Another example of using ChannelEntry data
 
 ```php
-use \Expressionengine\Coilpack\Models\ChannelEntry;
+use \Expressionengine\Coilpack\Models\Channel\ChannelEntry;
 
 $entries = ChannelEntry::whereHas('channel', function($query) {
     return $query->where('channel_name', 'news');
