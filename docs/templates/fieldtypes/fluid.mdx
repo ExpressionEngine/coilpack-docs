@@ -1,0 +1,191 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+
+# Fluid
+
+A Fluid field is a collection of fields. A Fluid field can contain any native fieldtype except another Fluid field. The fields assigned to the Fluid field can then be used multiple times in the same entry when creating/editing the entry. The author also has control over the order of the fields.
+
+## Template Usage
+
+When iterating over the rows of a Fluid field in a template you will have access to the value but also extra data which can be used to control the display of these fields and field groups.
+
+<Tabs>
+<TabItem value="twig" label="Twig">
+
+```twig
+{% for row in entry.fluid %}
+    Value: {{ row }}
+
+    Field Type: {{ row._field_type }} or {{ row.field.field_type }}
+    Field Name: {{ row._field_name }} or {{ row.field.field_name }}
+    Group Name: {{ row._field_name }} or {{ row.group.short_name }}
+
+    Field (when row is a field): {{ row.field }}
+    Group (when row is a field group): {{ row.group }}
+
+    Condition for fields - {% if row.field %} ... {% endif %}
+    Condition for field groups - {% if row.group %} ... {% endif %}
+
+{% endfor %}
+```
+
+</TabItem>
+<TabItem value="blade" label="Blade">
+
+```php
+@foreach($entry->fluid as $row)
+    Value: {{ $row }}
+
+    Field Type: {{ $row->_field_type }} or {{ $row->field.field_type }}
+    Field Name: {{ $row->_field_name }} or {{ $row->field.field_name }}
+    Group Name: {{ $row->_field_name }} or {{ $row->group.short_name }}
+
+    Field (when row is a field): {{ $row->field }}
+    Group (when row is a field group): {{ $row->group }}
+
+    Condition for fields - @if($row->field) ... @endif
+    Condition for field groups - @if($row->group) ... @endif
+
+@endforeach
+```
+
+</TabItem>
+</Tabs>
+
+
+
+## Field Groups
+
+ExpressionEngine 7.3 introduced the ability to use field groups within a Fluid field to further improve the content authoring experience.  Coilpack makes the Field Group's `short_name` available as the `_field_name` attribute and sets the `_field_type` attribute to a value of `field_group`.  We recommend using these attributes to conditionally handle the display of your fields and field groups.
+
+<Tabs>
+<TabItem value="twig" label="Twig">
+
+```twig
+{% for row in entry.fluid %}
+    {% if row._field_name == 'my_group' %}
+        {% for group_row in row.fields %}
+            {% if group_row._field_name == 'my_text' %}
+                <div class="my-text">{{ group_row | raw }}</div>
+            {% elseif group_row._field_name == 'my_image' %}
+                <div class="my-image"><img src="{{ group_row }}"/></div>
+            {% elseif group_row._field_name == 'my_grid' %}
+                <table>
+                    <tr>
+                        <th>Column 1</th>
+                        <th>Column 2</th>
+                    </tr>
+                {% for grid_row in group_row %}
+                    <tr>
+                        <td>{{ grid_row.column_1 }}</td>
+                        <td>{{ grid_row.column_2 }}</td>
+                    </tr>
+                {% endfor %}
+                </table>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endfor %}
+```
+
+</TabItem>
+<TabItem value="blade" label="Blade">
+
+```php
+@foreach($entry->fluid as $row)
+    @if($row->_field_name == 'my_group')
+        @foreach($row->fields as $group_row)
+            @if($group_row->_field_name == 'my_text')
+                <div class="my-text">{!! $group_row !!}</div>
+            @elseif($group_row->_field_name == 'my_image')
+                <div class="my-image"><img src="{{ $group_row }}"/></div>
+            @elseif($group_row->_field_name == 'my_grid')
+                <table>
+                    <tr>
+                        <th>Column 1</th>
+                        <th>Column 2</th>
+                    </tr>
+                @foreach($group_row as $grid_row)
+                    <tr>
+                        <td>{{ $grid_row->column_1 }}</td>
+                        <td>{{ $grid_row->column_2 }}</td>
+                    </tr>
+                @endforeach
+                </table>
+            @endif
+        @endforeach
+    @endif
+@endfor
+```
+
+</TabItem>
+</Tabs>
+
+
+## GraphQL
+
+When using GraphQL you can slightly alter the way you interact with a Fluid field by changing the value of the `graphql.prefer_union_types` in `config/coilpack.php`.  There are pros and cons for each approach so this is purely a matter of developer preference.
+
+The default behavior does not utilize Union Types.  This lends itself to a simpler request structure but will have extra response data with null values.
+
+```graphql
+exp_channel_entries {
+    data {
+        title
+        fluid_field {
+            _field_name
+            _field_type
+            my_group {
+                _field_name
+                _field_type
+                my_text
+                my_image
+                my_grid {
+                    column_1
+                    column_2
+                }
+            }
+        }
+    }
+}
+```
+
+Whereas using [Union Types](https://graphql.org/learn/schema/#union-types) can make the request a little more complex but will have a simpler and more succinct response.
+
+```graphql
+exp_channel_entries {
+    data {
+        title
+        fluid_field {
+            ... on fluid__my_group {
+                name
+                fields {
+                    __typename
+                    ... on fluid__my_text {
+                        mytext:content
+                    }
+                    ... on fluid__my_image {
+                        myimage:content {
+                            url
+                            filename
+                            width
+                            file_name
+                        }
+                    }
+                    ... on fluid__my_grid {
+                        mygrid:content {
+                            column_1
+                            column_2
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+```
+
+:::info
+See the ExpressionEngine Documentation for more information on the [Fluid fieldtype](https://docs.expressionengine.com/latest/fieldtypes/fluid.html)
+:::

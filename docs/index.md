@@ -31,7 +31,6 @@ No, it's important to remember that Coilpack serves the purpose of connecting Ex
 
 ## Known Issues
 
-- There is a known conflict when using Spatie Ray and the ExpressionEngine core Add-on Structure
 - Using Laravel Telescope will register a wildcard event listener that conflicts with how we translate ExpressionEngine extensions into Laravel Events.  For now we recommend setting `TELESCOPE_EVENT_WATCHER=false` in your .env file otherwise your site may not render properly.
 - Coilpack works well out of the box when using Laravel Valet and with Apache webservers, but we have noticed some issues in certain Nginx installs.  We recommend using a configuration similar to the one below with Nginx:
 

@@ -18,4 +18,7 @@ Certain parameters or modifiers may behave differently in Coilpack or may not be
 
 {# Modifier with parameters #}
 {{ entry.field_name.modifier_name({parameter_name: "value"}) }}
+
+{# Chaining Modifiers #}
+{{ entry.field_name.modifier_name({parameter_name: "value"}).another_modifier() }}
 ```

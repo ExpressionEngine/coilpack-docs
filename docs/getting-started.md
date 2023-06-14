@@ -19,7 +19,7 @@ php artisan coilpack
 
 ## Choosing a Laravel Version
 
-We recommend using the latest version of Laravel whenever possible.  If you are limited to a certain version of PHP we have a table below showing which version of Laravel may be right for you.
+We recommend using the latest version of Laravel whenever possible.  The only reason you should not use the latest version is if you are limited to a certain version of PHP.  The table below shows which versions of Laravel are supported on different versions of PHP.
 
 | PHP     | Laravel |
 | ------- | ------- |
@@ -33,6 +33,14 @@ To use Coilpack You will need a development environment with PHP >= 7.4.0 and Co
 
 
 ### Create A Laravel Project
+
+This create project command will setup a new Laravel project at the highest version supported by your environment.
+
+```sh
+composer create-project --prefer-dist laravel/laravel project-name
+```
+
+Alternatively you can specify a major version of Laravel:
 
 ```sh
 composer create-project --prefer-dist laravel/laravel:^8.0 project-name

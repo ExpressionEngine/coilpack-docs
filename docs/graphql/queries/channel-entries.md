@@ -56,7 +56,7 @@ Here is an example of using the `resize` modifier available on File fieldtypes
 }
 ```
 
-And here is an example of using the `length` modifier available on most fieldtypes.
+Here is an example of using the `length` modifier which is available on most fieldtypes.  This example also demonstrates how to chain modifiers together to get the `length` of the page_content after it has gone through a `limit` modifier.
 
 ```graphql
 {
@@ -64,6 +64,14 @@ And here is an example of using the `length` modifier available on most fieldtyp
         entry_id
         title
         page_content(length:true)
+        excerpt_length:page_content(
+            limit: {characters: 10, end_char: "..."},
+            length: true
+        )
     }
 }
 ```
+
+:::info
+While the [GraphQL specification treats arguments as unordered](http://spec.graphql.org/draft/#sec-Language.Arguments.Arguments-Are-Unordered)  Coilpack does extra work to ensure the order of modifiers is maintained.
+:::

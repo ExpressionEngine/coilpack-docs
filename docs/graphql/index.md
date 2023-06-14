@@ -36,6 +36,11 @@ The GraphQL integration's behavior can be configured in the `config/coilpack.php
          */
         'is_default_schema' => true,
 
+        /*
+         * Flag to indicate preference for using GraphQL Union Types
+         */
+        'prefer_union_types' => false,
+
         /**
          * Settings to control how requests to the GraphQL API should be authenticated
          */

@@ -67,6 +67,14 @@ File fields utilize the built-in file browser to store uploaded files and images
 {{ entry.file.manipulation('manipulation_name') }}
 ```
 
+## Chaining Modifiers
+
+ExpressionEngine 7.3 introduced the ability to chain modifiers.  This can be a very valuable tool when working with files if you want to manipulate a modified file even further.
+
+```twig
+{{ entry.file.manipulation('manipulation_name').crop({width: 100, height: 100}) }}
+```
+
 :::info
 See the ExpressionEngine Documentation for more information on the [File fieldtype](https://docs.expressionengine.com/latest/fieldtypes/file.html)
 :::
