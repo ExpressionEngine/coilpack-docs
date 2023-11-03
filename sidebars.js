@@ -17,6 +17,7 @@ const sidebars = {
     docsSidebar: [
         { type: 'doc', id: 'index', label: 'About Coilpack' },
         'getting-started',
+        'upgrade-guide',
         {
             type: 'category',
             label: 'Guides',

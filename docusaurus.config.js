@@ -55,6 +55,11 @@ const config = {
     themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
         ({
+        algolia: {
+            appId: 'YC8OOJPRBB',
+            apiKey: '6fce6dd89b176cd112b727bddd10ef25',
+            indexName: 'coilpack',
+        },
         navbar: {
             title: 'Coilpack',
             logo: {
@@ -68,6 +73,10 @@ const config = {
                     label: 'Documentation',
                 },
                 { to: '/blog', label: 'Blog', position: 'left' },
+                {
+                    type: 'search',
+                    position: 'right',
+                },
                 {
                     href: 'https://github.com/expressionengine/coilpack',
                     label: 'GitHub',

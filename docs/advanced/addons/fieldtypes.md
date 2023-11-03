@@ -110,6 +110,3 @@ if (ee()->has('coilpack')) {
     ee()->coilpack->registerFieldtype('super_checkbox', 'Addon\Fieldtypes\SuperCheckbox');
 }
 ```
-
-
-use Expressionengine\Coilpack\Contracts\ListsGraphType;
