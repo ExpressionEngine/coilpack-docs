@@ -11,11 +11,11 @@ You can use a single variable for Multi Select to render a comma-separated list 
 
 {% for label, value in entry.multi_select.options %}
     {{ label }} - {{ value }}
-{%endfor}
+{% endfor %}
 
 {% for label, value in entry.multi_select.selected %}
     {{ label }} - {{ value }}
-{%endfor}
+{% endfor %}
 ```
 
 ## Parameters

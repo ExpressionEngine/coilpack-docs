@@ -7,11 +7,11 @@ Select Dropdown fields allow publishers to choose a single item from a dropdown 
 
 {% for label, value in entry.select.options %}
     {{ label }} - {{ value }}
-{%endfor}
+{% endfor %}
 
 {% for label, value in entry.select.selected %}
     {{ label }} - {{ value }}
-{%endfor}
+{% endfor %}
 ```
 
 ## Parameters

@@ -7,11 +7,11 @@ Radio Buttons allow users to choose a single item from a list of options.
 
 {% for label, value in entry.radio.options %}
     {{ label }} - {{ value }}
-{%endfor}
+{% endfor %}
 
 {% for label, value in entry.radio.selected %}
     {{ label }} - {{ value }}
-{%endfor}
+{% endfor %}
 ```
 
 

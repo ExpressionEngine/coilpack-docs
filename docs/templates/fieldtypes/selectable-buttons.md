@@ -7,11 +7,11 @@ Selectable Button fields allow publishers to choose either multiple or single it
 
 {% for label, value in entry.buttons.options %}
     {{ label }} - {{ value }}
-{%endfor}
+{% endfor %}
 
 {% for label, value in entry.buttons.selected %}
     {{ label }} - {{ value }}
-{%endfor}
+{% endfor %}
 ```
 
 ## Parameters

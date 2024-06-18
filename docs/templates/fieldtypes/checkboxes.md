@@ -11,11 +11,11 @@ You can use a single variable for Checkboxes to render a comma-separated list of
 
 {% for label, value in entry.checkbox_field.options %}
     {{ label }} - {{ value }}
-{%endfor}
+{% endfor %}
 
 {% for label, value in entry.checkbox_field.selected %}
     {{ label }} - {{ value }}
-{%endfor}
+{% endfor %}
 ```
 
 ## Parameters
