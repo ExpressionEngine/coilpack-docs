@@ -11,7 +11,7 @@ Read more about how URLs are handled inside of Coilpack in the [Routing Section]
 If you are new to Laravel and Coilpack we strongly recommend you follow the rest of this guide for getting started.  However, if you have installed Coilpack before or are familiar with setting up a Laravel application you can get started quickly with the commands below.
 
 ```sh
-composer create-project --prefer-dist laravel/laravel project-name
+composer create-project --prefer-dist "laravel/laravel:<=10" project-name
 cd project-name
 composer require expressionengine/coilpack:1.x
 php artisan coilpack
