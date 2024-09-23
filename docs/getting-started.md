@@ -68,6 +68,10 @@ DB_USERNAME=root
 DB_PASSWORD=
 ```
 
+:::tip
+If you're using DDEV your database connection settings will be different and most likely have a value of `db`.  For more information we recommend reading [a guide for using Laravel with DDEV](https://ddev.com/blog/ddev-local-for-laravel-teams/)
+:::
+
 ### Require Coilpack
 
 Inside of your Laravel project, you will need to update your project to use the Coilpack package.
