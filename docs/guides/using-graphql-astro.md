@@ -33,12 +33,16 @@ Do you plan to write TypeScript?
 Liftoff confirmed. Explore your project!
 ```
 
-Once the installation is complete you can change into the Astro project directory and start the live reload development server.
+Once the installation is complete you can change into the Astro project directory and [start the live reload development server](https://docs.astro.build/en/install-and-setup/#start-the-astro-dev-server).
 
 ```
 cd astro-project-folder
 npm run dev
 ```
+
+:::tip
+If the installation was successful, your project will be available at [http://localhost:4321/](http://localhost:4321/).
+:::
 
 ## Connect to GraphQL
 
@@ -46,9 +50,14 @@ After we install Astro we are going to create a helper class to run our GraphQL 
 
 Create a new file at `src/graphql.js` with the following content:
 
+:::caution
+Make sure you update the `static endpoint = '';` line below to point at your Coilpack site and the graphql endpoint (`/graphql` by default)
+:::
+
 ```js
 class GraphQL {
 
+    // Change this url to match your Coilpack installation's APP_URL
     static endpoint = 'http://coilpack-site-url.test/graphql';
 
     static async query(query) {
