@@ -5,7 +5,7 @@ Toggle is a fieldtype for storing yes/no or on/off data.
 ```twig
 {{ entry.toggle }}
 
-{% if entry.toggle %}
+{% if entry.toggle == '1' %}
     Yes
 {% else %}
     No
