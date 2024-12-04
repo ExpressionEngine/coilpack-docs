@@ -16,6 +16,8 @@ export default function prismIncludeLanguages(PrismObject) {
     require(`prismjs/components/prism-${lang}`);
   });
 
+  require(`prismjs/components/prism-markup-templating`);
+
   require('../prism/prism-twig');
   require('../prism/prism-php');
 

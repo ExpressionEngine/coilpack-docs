@@ -1,8 +1,7 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+import {themes as prismThemes} from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -25,6 +24,10 @@ const config = {
     i18n: {
         defaultLocale: 'en',
         locales: ['en'],
+    },
+
+    future: {
+    experimental_faster: true,
     },
 
     presets: [
@@ -129,8 +132,8 @@ const config = {
             copyright: `Packet Tide owns and develops ExpressionEngine.<br/> © Packet Tide, All Rights Reserved.`,
         },
         prism: {
-            theme: lightCodeTheme,
-            darkTheme: darkCodeTheme,
+            theme: prismThemes.github,
+            darkTheme: prismThemes.dracula,
             // Unfortunately Twig isn't this easy to support
             // https://github.com/facebook/docusaurus/issues/6963
             // https://github.com/facebook/docusaurus/issues/8065
