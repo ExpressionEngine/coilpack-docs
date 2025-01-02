@@ -94,6 +94,10 @@ php artisan coilpack
 
 We recommend keeping your version of ExpressionEngine updated to the latest 7.x release as we are constantly making improvements that may also affect Coilpack.
 
+:::tip
+Whether installing a fresh copy of ExpressionEngine or adding Coilpack to an existing site you may need to update the value of `admin_url` in `config/coilpack.php` to be `/admin` instead of `/admin.php`. This will be the default in version 2 of Coilpack. The reason for this change is that some server configurations will incorrectly route files that end in .php if they don't exist. 
+:::
+
 ### Using a New ExpressionEngine Install
 
 If you want Coilpack to create a new ExpressionEngine install, it will be placed in an `ee` folder within your Laravel project.  You now need to setup ExpressionEngine via the `admin.php` file in your `ee` folder. Example: `http://localhost/admin.php`. Follow the on-screen instructions to finalize your ExpressionEngine install.
