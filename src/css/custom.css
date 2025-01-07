@@ -7,12 +7,12 @@
 
 /* You can override the default Infima variables here. */
 
-#F62A58:root {
-    --ifm-color-primary: #5379DA;
+:root {
+    --ifm-color-primary: #5C63F0;
     --ifm-color-primary-dark: #311248;
     --ifm-color-primary-darker: #311248;
     --ifm-color-primary-darkest: #311248;
-    --ifm-color-primary-light: #5379DA;
+    --ifm-color-primary-light: #5C63F0;
     --ifm-color-primary-lighter: #5473d9;
     --ifm-color-primary-lightest: #787DF2;
     --ifm-code-font-size: 95%;

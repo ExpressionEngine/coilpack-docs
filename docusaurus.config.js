@@ -6,7 +6,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 /** @type {import('@docusaurus/types').Config} */
 const config = {
     title: 'Coilpack',
-    tagline: 'ExpressionEngine',
+    tagline: 'ExpressionEngine + Laravel: a powerful combination',
     url: 'https://your-docusaurus-test-site.com',
     baseUrl: '/coilpack-docs',
     onBrokenLinks: 'throw',
@@ -64,10 +64,11 @@ const config = {
             indexName: 'coilpack',
         },
         navbar: {
-            title: 'Coilpack',
+            title: null,
             logo: {
-                alt: 'My Site Logo',
+                alt: 'Coilpack',
                 src: 'img/logo.png',
+                srcDark: 'img/logo-dark.png'
             },
             items: [{
                     type: 'doc',
