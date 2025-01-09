@@ -43,7 +43,7 @@ Create a new file at `/ee/system/user/templates/default_site/example.group/entry
 The [Twig `raw` filter](https://twig.symfony.com/doc/3.x/filters/raw.html) is used to prevent escaping the html tags that are part of the RTE output.
 :::
 
-For more details check out our documentation on [writing templates](../templates/index.mdx) and the [fieldtypes](../templates/fieldtypes.md) and [tags](../templates/tags.md) that are available for you to use.
+For more details check out our documentation on [writing templates](../templates/index.mdx) and the [fieldtypes](../templates/fieldtypes.mdx) and [tags](../templates/tags.md) that are available for you to use.
 
 ## Twig functions and filters
 

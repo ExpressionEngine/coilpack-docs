@@ -6,7 +6,7 @@ Coilpack expands support for [ExpressionEngine's Template Generator](https://doc
 
 ### Control Panel
 
-The Channel and Field Manager display a shortname next to each item's title which you can click to copy example template code.  This code will be generated using the site's [default template engine](/configuration#default-template-engine).  If not specified this will use the Native Template Language so be sure to change this if you wish to copy code in Twig or Blade.
+The Channel and Field Manager display a shortname next to each item's title which you can click to copy example template code.  This code will be generated using the site's [default template engine](../configuration.md#default-template-engine).  If not specified this will use the Native Template Language so be sure to change this if you wish to copy code in Twig or Blade.
 
 :::warning
 Due to security restrictions in modern browsers copying code via the shortname is only supported when on HTTPS.

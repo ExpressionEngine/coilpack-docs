@@ -1,4 +1,6 @@
-![coilpack-logo](https://github.com/user-attachments/assets/5f161c5d-3944-413a-869f-26bea39e32c6)
+<p align="center">
+<img src="https://github.com/user-attachments/assets/5f161c5d-3944-413a-869f-26bea39e32c6" width="400" alt="Coilpack Logo"></a>
+</p>
 
 # Coilpack Documentation
 
