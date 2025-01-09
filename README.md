@@ -1,3 +1,5 @@
+![coilpack-logo](https://github.com/user-attachments/assets/5f161c5d-3944-413a-869f-26bea39e32c6)
+
 # Coilpack Documentation
 
 This is the documentation for [Coilpack by ExpressionEngine](https://github.com/ExpressionEngine/Coilpack) built

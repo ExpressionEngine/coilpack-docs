@@ -11,21 +11,22 @@ Read more about how URLs are handled inside of Coilpack in the [Routing Section]
 If you are new to Laravel and Coilpack we strongly recommend you follow the rest of this guide for getting started.  However, if you have installed Coilpack before or are familiar with setting up a Laravel application you can get started quickly with the commands below.
 
 ```sh
-composer create-project --prefer-dist "laravel/laravel:<=10" project-name
+composer create-project --prefer-dist "laravel/laravel:<=11" project-name
 cd project-name
-composer require expressionengine/coilpack:1.x
+composer require expressionengine/coilpack:2.x
 php artisan coilpack
 ```
 
 ## Choosing a Laravel Version
 
-We recommend using the latest version of Laravel whenever possible.  The only reason you should not use the latest version is if you are limited to a certain version of PHP.  The table below shows which versions of Laravel are supported on different versions of PHP.
+We recommend using the latest version of Laravel whenever possible.  The only reason you should not use the latest version is if you are limited to a certain version of PHP.  The table below shows which versions of Laravel and Coilpack are supported on different versions of PHP.
 
-| PHP     | Laravel |
-| ------- | ------- |
-| 8.1.0+  | 10.x    |
-| 8.0.2+  | 9.x     |
-| 7.4.0+  | 8.x     |
+| PHP     | Laravel | Coilpack |
+| ------- | ------- | -------- |
+| 8.2.0+  | 11.x    | 2.x      |
+| 8.1.0+  | 10.x    | 2.x, 1.x |
+| 8.0.2+  | 9.x     | 2.x, 1.x |
+| 7.4.0+  | 8.x     | 1.x      |
 
 ## Installation
 
@@ -43,7 +44,7 @@ composer create-project --prefer-dist laravel/laravel project-name
 Alternatively you can specify a major version of Laravel:
 
 ```sh
-composer create-project --prefer-dist laravel/laravel:^8.0 project-name
+composer create-project --prefer-dist laravel/laravel:^9.0 project-name
 ```
 
 :::caution
@@ -96,7 +97,7 @@ We recommend keeping your version of ExpressionEngine updated to the latest 7.x 
 
 ### Using a New ExpressionEngine Install
 
-If you want Coilpack to create a new ExpressionEngine install, it will be placed in an `ee` folder within your Laravel project.  You now need to setup ExpressionEngine via the `admin.php` file in your `ee` folder. Example: `http://localhost/admin.php`. Follow the on-screen instructions to finalize your ExpressionEngine install.
+If you want Coilpack to create a new ExpressionEngine install, it will be placed in an `ee` folder within your Laravel project.  You now need to setup ExpressionEngine via the installer. The default url is `/admin` for example: `http://localhost/admin`. Follow the on-screen instructions to finalize your ExpressionEngine install.
 
 For more help with installing ExpressionEngine reference the [ExpressionEngine Docs](https://docs.expressionengine.com/latest/installation/installation.html).
 
@@ -104,7 +105,7 @@ For more help with installing ExpressionEngine reference the [ExpressionEngine D
 
 If you want to use an existing ExpressionEngine install you will be prompted for a path that is accessible from your Laravel project.  The path can be relative or absolute and should point to the root folder of your ExpressionEngine install.  You will also be asked for relative paths to system and config folders.  The typical locations are provided as default answers but if you have a customized setup it is important to let Coilpack know where to find these directories.
 
-After you have linked your site with Coilpack you will need to change the way you access the site.  For example if your ExpressionEngine site is located at `https://example.com`, and your Laravel application is setup to be accessed via `https://coilpack.example.com`, after setting up Coilpack you will need to access your ExpressionEngine site via `https://coilpack.example.com` (`https://coilpack.example.com/admin.php` to access the Control Panel).
+After you have linked your site with Coilpack you will need to change the way you access the site.  For example if your ExpressionEngine site is located at `https://example.com`, and your Laravel application is setup to be accessed via `https://coilpack.example.com`, after setting up Coilpack you will need to access your ExpressionEngine site via `https://coilpack.example.com` (`https://coilpack.example.com/admin` to access the Control Panel).
 
 For the sake of SEO, current links in place, etc, once you decide to use Coilpack for your website, you will probably want to update your webserver to point your site's current URL to your Laravel project. Talk to your webserver admin for information on how to accomplish this.
 

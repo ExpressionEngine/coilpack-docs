@@ -4,13 +4,15 @@ You can upgrade to the latest version of Coilpack by running `composer update --
 
 ## Review the Changelog
 
-It's always a good idea to be aware of what is changing in each release. You can see a list of all changes in our [current changelog](https://github.com/ExpressionEngine/Coilpack/blob/1.x/CHANGELOG.md).
+It's always a good idea to be aware of what is changing in each release. You can see a list of all changes in our [current changelog](https://github.com/ExpressionEngine/Coilpack/blob/2.x/CHANGELOG.md).
 
 ## Configuration Changes
 
-Between versions the Coilpack configuration file may change.  We recommend comparing the most [recent changes](https://github.com/ExpressionEngine/Coilpack/blob/1.x/config/coilpack.php) with your own `config/coilpack.php` file.
+Between versions the Coilpack configuration file may change.  We recommend comparing the most [recent changes](https://github.com/ExpressionEngine/Coilpack/blob/2.x/config/coilpack.php) with your own `config/coilpack.php` file.
 
 ## Upgrading to 2.0 from 1.x
+
+The default value for `admin_url` has been changed from `/admin.php` to `/admin` to avoid routing issues with certain webserver configurations.
 
 The GraphQL signature for the Range Slider Fieldtype has changed to allow requesting specific subfields like `value`, `from`, and `to`.
 

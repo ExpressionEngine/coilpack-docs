@@ -21,3 +21,17 @@ Certain configuration variables in ExpressionEngine will be overwritten by your 
 ## Accessing ExpressionEngine Config Values
 
 After Coilpack bootstraps ExpressionEngine you will be able to access any of your ExpressionEngine `system/user/config.php` values through the Laravel `config()` helper.  For example to get your `app_version` you could call `config('coilpack.expressionengine.app_version')`  within your Laravel application.
+
+## Default Template Engine
+
+ExpressionEngine 7.5 added a new configuration option to control the site's default template engine.  This setting will be considered whenever you create a new template, run a template generator or copy template code for a channel or field.
+
+```
+# system/user/config/config.php
+
+...
+/*
+ * Set the default template engine
+ * Default: null (native). Can be 'twig' or 'blade' with Coilpack
+ */
+$config['default_template_engine'] = 'twig';

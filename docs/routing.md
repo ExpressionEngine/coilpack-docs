@@ -6,7 +6,7 @@ Coilpack works by bootstrapping ExpressionEngine inside of a Laravel application
 
 Coilpack sets up a few special routes for you:
 
-- `/admin.php` - Access the ExpressionEngine Control Panel
+- `/admin` - Access the ExpressionEngine Control Panel
 - `/graphql` - GraphQL Data endpoint when [GraphQL is enabled](./graphql#enabling-graphql-support)
 - `/graphiql` - Interactive GraphQL testing endpoint when [GraphiQL is enabled](./graphql#tools)
 
