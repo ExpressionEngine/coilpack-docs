@@ -1,0 +1,248 @@
+# File
+
+File fields utilize the built-in file browser to store uploaded files and images for your publishers.
+
+:::note
+The following examples use a field named `file_field`. This should be replaced with your field name.
+:::
+
+<Tabs groupId="template-language">
+<TabItem value="twig" label="Twig">
+
+```twig
+{{ entry.file_field }}
+```
+
+</TabItem>
+<TabItem value="blade" label="Blade">
+
+```php
+{{ $entry->file_field }}
+```
+
+</TabItem>
+</Tabs>
+
+## Variables
+
+<Tabs groupId="template-language">
+<TabItem value="twig" label="Twig">
+
+```twig
+{{ entry.file_field.credit }}
+{{ entry.file_field.description }}
+{{ entry.file_field.directory_id }}
+{{ entry.file_field.directory_title }}
+{{ entry.file_field.extension }}
+{{ entry.file_field.file_id }}
+{{ entry.file_field.file_name }}
+{{ entry.file_field.file_size }}
+{{ entry.file_field.height }}
+{{ entry.file_field.id_path }}
+{{ entry.file_field.location }}
+{{ entry.file_field.mime_type }}
+{{ entry.file_field.modified_date }}
+{{ entry.file_field.path }}
+{{ entry.file_field.title }}
+{{ entry.file_field.upload_date }}
+{{ entry.file_field.url }}
+{{ entry.file_field.width }}
+```
+
+</TabItem>
+<TabItem value="blade" label="Blade">
+
+```php
+{{ $entry->file_field->credit }}
+{{ $entry->file_field->description }}
+{{ $entry->file_field->directory_id }}
+{{ $entry->file_field->directory_title }}
+{{ $entry->file_field->extension }}
+{{ $entry->file_field->file_id }}
+{{ $entry->file_field->file_name }}
+{{ $entry->file_field->file_size }}
+{{ $entry->file_field->height }}
+{{ $entry->file_field->id_path }}
+{{ $entry->file_field->location }}
+{{ $entry->file_field->mime_type }}
+{{ $entry->file_field->modified_date }}
+{{ $entry->file_field->path }}
+{{ $entry->file_field->title }}
+{{ $entry->file_field->upload_date }}
+{{ $entry->file_field->url }}
+{{ $entry->file_field->width }}
+```
+
+</TabItem>
+</Tabs>
+
+## Parameters
+
+<Tabs groupId="template-language">
+<TabItem value="twig" label="Twig">
+
+```twig
+{{ entry.file_field.parameters({wrap: 'link'}) }}
+```
+
+</TabItem>
+<TabItem value="blade" label="Blade">
+
+```php
+{{ $entry->file_field->parameters(['wrap' => 'link']) }}
+```
+
+</TabItem>
+</Tabs>
+
+## Modifiers
+
+### Rotate
+
+Rotate the image.
+
+<Tabs groupId="template-language">
+<TabItem value="twig" label="Twig">
+
+```twig
+{{ entry.file_field.rotate({angle: 90}) }}
+```
+
+</TabItem>
+<TabItem value="blade" label="Blade">
+
+```php
+{{ $entry->file_field->rotate(['angle' => 90]) }}
+```
+
+</TabItem>
+</Tabs>
+
+### Crop
+
+Crop the image.
+
+<Tabs groupId="template-language">
+<TabItem value="twig" label="Twig">
+
+```twig
+{{ entry.file_field.crop({width: 100, height: 100}) }}
+```
+
+</TabItem>
+<TabItem value="blade" label="Blade">
+
+```php
+{{ $entry->file_field->crop(['width' => 100, 'height' => 100]) }}
+```
+
+</TabItem>
+</Tabs>
+
+### Resize
+
+Resize the image.
+
+<Tabs groupId="template-language">
+<TabItem value="twig" label="Twig">
+
+```twig
+{{ entry.file_field.resize({width: 100, height: 100}) }}
+```
+
+</TabItem>
+<TabItem value="blade" label="Blade">
+
+```php
+{{ $entry->file_field->resize(['width' => 100, 'height' => 100]) }}
+```
+
+</TabItem>
+</Tabs>
+
+### WebP
+
+Convert the image to WEBP format.
+
+<Tabs groupId="template-language">
+<TabItem value="twig" label="Twig">
+
+```twig
+{{ entry.file_field.webp({width: 100, height: 100}) }}
+```
+
+</TabItem>
+<TabItem value="blade" label="Blade">
+
+```php
+{{ $entry->file_field->webp(['width' => 100, 'height' => 100]) }}
+```
+
+</TabItem>
+</Tabs>
+
+### Resize And Crop
+
+Resize the image and then crop it.
+
+<Tabs groupId="template-language">
+<TabItem value="twig" label="Twig">
+
+```twig
+{{ entry.file_field.resize_crop({'resize:width': 100, 'crop:width': 100}) }}
+```
+
+</TabItem>
+<TabItem value="blade" label="Blade">
+
+```php
+{{ $entry->file_field->resize_crop(['resize:width' => 100, 'crop:height' => 100]) }}
+```
+
+</TabItem>
+</Tabs>
+
+
+### Pre-defined Manipulation
+
+<Tabs groupId="template-language">
+<TabItem value="twig" label="Twig">
+
+```twig
+{{ entry.file_field.manipulation('manipulation_name') }}
+```
+
+</TabItem>
+<TabItem value="blade" label="Blade">
+
+```php
+{{ $entry->file_field->manipulation('manipulation_name') }}
+```
+
+</TabItem>
+</Tabs>
+
+## Chaining Modifiers
+
+ExpressionEngine 7.3 introduced the ability to chain modifiers.  This can be a very valuable tool when working with files if you want to manipulate a modified file even further.
+
+<Tabs groupId="template-language">
+<TabItem value="twig" label="Twig">
+
+```twig
+{{ entry.file_field.manipulation('manipulation_name').crop({width: 100, height: 100}) }}
+```
+
+</TabItem>
+<TabItem value="blade" label="Blade">
+
+```php
+{{ $entry->file_field->manipulation('manipulation_name')->crop(['width' => 100, 'height' => 100]) }}
+```
+
+</TabItem>
+</Tabs>
+
+:::info
+See the ExpressionEngine Documentation for more information on the [File fieldtype](https://docs.expressionengine.com/latest/fieldtypes/file.html)
+:::

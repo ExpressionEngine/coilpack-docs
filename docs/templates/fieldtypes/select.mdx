@@ -1,0 +1,64 @@
+# Select Dropdown
+
+Select Dropdown fields allow publishers to choose a single item from a dropdown list.
+
+:::note
+The following examples use a field named `select_field`. This should be replaced with your field name.
+:::
+
+<Tabs groupId="template-language">
+<TabItem value="twig" label="Twig">
+
+```twig
+{{ entry.select_field }}
+
+{% for value, label in entry.select_field.options %}
+    {{ label }} - {{ value }}
+{% endfor %}
+
+{% for value, label in entry.select_field.selected %}
+    {{ label }} - {{ value }}
+{% endfor %}
+```
+
+</TabItem>
+<TabItem value="blade" label="Blade">
+
+```php
+{{ $entry->select_field }}
+
+@foreach($entry->select_field->options as $value => $label)
+    {{ $label }} - {{ $value }}
+@endforeach
+
+@foreach($entry->select_field->selected as $value => $label)
+    {{ $label }} - {{ $value }}
+@endforeach
+```
+
+</TabItem>
+</Tabs>
+
+## Parameters
+
+
+<Tabs groupId="template-language">
+<TabItem value="twig" label="Twig">
+
+```twig
+{{ entry.select_field.parameters({markup: 'ul'}) }}
+```
+
+</TabItem>
+<TabItem value="blade" label="Blade">
+
+```php
+{{ $entry->select_field->parameters(['markup' => 'ul']) }}
+```
+
+</TabItem>
+</Tabs>
+
+:::info
+See the ExpressionEngine Documentation for more information on the [Select Dropdown fieldtype](https://docs.expressionengine.com/latest/fieldtypes/select.html)
+:::

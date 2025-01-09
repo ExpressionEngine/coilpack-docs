@@ -1,0 +1,68 @@
+# Multi Select
+
+Multi Select Fields allow publishers to choose multiple items from a list.
+
+:::note
+The following examples use a field named `multi_select_field`. This should be replaced with your field name.
+:::
+
+### Single Variable
+
+You can use a single variable for Multi Select to render a comma-separated list of the labels.
+
+
+<Tabs groupId="template-language">
+<TabItem value="twig" label="Twig">
+
+```twig
+{{ entry.multi_select_field }}
+
+{% for value, label in entry.multi_select_field.options %}
+    {{ label }} - {{ value }}
+{% endfor %}
+
+{% for value, label in entry.multi_select_field.selected %}
+    {{ label }} - {{ value }}
+{% endfor %}
+```
+
+</TabItem>
+<TabItem value="blade" label="Blade">
+
+```php
+{{ $entry->multi_select_field }}
+
+@foreach($entry->multi_select_field->options as $value => $label)
+    {{ $label }} - {{ $value }}
+@endforeach
+
+@foreach($entry->multi_select_field->selected as $value => $label)
+    {{ $label }} - {{ $value }}
+@endforeach
+```
+
+</TabItem>
+</Tabs>
+
+## Parameters
+
+<Tabs groupId="template-language">
+<TabItem value="twig" label="Twig">
+
+```twig
+{{ entry.multi_select_field.parameters({limit: 1, markup: 'ul'}) }}
+```
+
+</TabItem>
+<TabItem value="blade" label="Blade">
+
+```php
+{{ $entry->multi_select_field->parameters(['limit' => 1, 'markup' => 'ul']) }}
+```
+
+</TabItem>
+</Tabs>
+
+:::info
+See the ExpressionEngine Documentation for more information on the [Multi Select fieldtype](https://docs.expressionengine.com/latest/fieldtypes/multiselect.html)
+:::

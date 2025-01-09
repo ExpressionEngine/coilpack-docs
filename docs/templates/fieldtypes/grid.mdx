@@ -1,0 +1,54 @@
+# Grid
+
+The Grid field in ExpressionEngine provides a way to group fieldtypes in repeatable rows. This is useful for when you need to group a subset of data in your channel entry form that may or may not have a varying number of rows. You can select a minimum and a maximum amount of rows to allow data entry for, or it can be virtually infinite.
+
+:::note
+The following examples use a field named `grid_field` as well as columns named `column_1` and `column_2`. These should be replaced with your field and column names.
+:::
+
+<Tabs groupId="template-language">
+<TabItem value="twig" label="Twig">
+
+```twig
+{% for row in entry.grid_field %}
+    {{ row.column_1 }}
+    {{ row.column_2 }}
+{% endfor %}
+```
+
+</TabItem>
+<TabItem value="blade" label="Blade">
+
+```php
+@foreach($entry->grid_field as $row)
+    {{ $row->column_1 }}
+    {{ $row->column_2 }}
+@endforeach
+```
+
+</TabItem>
+</Tabs>
+
+
+## Parameters
+
+<Tabs groupId="template-language">
+<TabItem value="twig" label="Twig">
+
+```twig
+{% for row in entry.grid_field.parameters({sort: 'desc', limit: 2}) %}
+```
+
+</TabItem>
+<TabItem value="blade" label="Blade">
+
+```php
+@foreach($entry->grid_field->parameters(['sort' => 'desc', 'limit' => 2]) as $row)
+```
+
+</TabItem>
+</Tabs>
+
+:::info
+See the ExpressionEngine Documentation for more information on the [Grid fieldtype](https://docs.expressionengine.com/latest/fieldtypes/grid.html)
+:::

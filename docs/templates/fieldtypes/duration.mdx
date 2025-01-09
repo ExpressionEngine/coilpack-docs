@@ -1,0 +1,51 @@
+# Duration
+
+Duration is a fieldtype that allows you to store lengths of time.
+
+:::note
+The following examples use a field named `duration_field`. This should be replaced with your field name.
+:::
+
+<Tabs groupId="template-language">
+<TabItem value="twig" label="Twig">
+
+```twig
+{{ entry.duration_field }}
+```
+
+</TabItem>
+<TabItem value="blade" label="Blade">
+
+```php
+{{ $entry->duration_field }}
+```
+
+</TabItem>
+</Tabs>
+
+## Parameters
+
+### Format
+
+Similar to [Date Variable Formatting](https://docs.expressionengine.com/latest/templates/date-variable-formatting.html), you can customize how you display the duration using a format= parameter. For example, 2:15:12 (8112 seconds) could also be displayed with:
+
+<Tabs groupId="template-language">
+<TabItem value="twig" label="Twig">
+
+```twig
+{{ entry.duration_field.parameters({format: '%h hrs, %m min'}) }}
+```
+
+</TabItem>
+<TabItem value="blade" label="Blade">
+
+```php
+{{ $entry->duration_field->parameters(['format' => '%h hrs, %m min']) }}
+```
+
+</TabItem>
+</Tabs>
+
+:::info
+See the ExpressionEngine Documentation for more information on the [Duration fieldtype](https://docs.expressionengine.com/latest/fieldtypes/duration.html)
+:::

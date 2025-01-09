@@ -1,0 +1,90 @@
+# Checkboxes
+
+Checkboxes allow publishers to choose multiple items from a list.
+
+:::note
+The following examples use a field named `checkboxes_field`. This should be replaced with your field name.
+:::
+
+### Single Variable
+
+You can use a single variable for Checkboxes to render a comma-separated list of the labels.
+
+<Tabs groupId="template-language">
+<TabItem value="twig" label="Twig">
+
+```twig
+{{ entry.checkboxes_field }}
+
+{% for value, label in entry.checkboxes_field.options %}
+    {{ label }} - {{ value }}
+{% endfor %}
+
+{% for value, label in entry.checkboxes_field.selected %}
+    {{ label }} - {{ value }}
+{% endfor %}
+```
+
+</TabItem>
+<TabItem value="blade" label="Blade">
+
+```php
+{{ $entry->checkboxes_field }}
+
+@foreach($entry->checkboxes_field->options as $value => $label)
+    {{ $label }} - {{ $value }}
+@endforeach
+
+@foreach($entry->checkboxes_field->selected as $value => $label)
+    {{ $label }} - {{ $value }}
+@endforeach
+```
+
+</TabItem>
+</Tabs>
+
+## Parameters
+
+### Limit
+
+<Tabs groupId="template-language">
+<TabItem value="twig" label="Twig">
+
+```twig
+{{ entry.checkboxes_field.parameters({limit: 1}) }}
+```
+
+</TabItem>
+<TabItem value="blade" label="Blade">
+
+```php
+{{ $entry->checkboxes_field->parameters(['limit' => 1]) }}
+```
+
+</TabItem>
+</Tabs>
+
+
+
+### Markup
+
+<Tabs groupId="template-language">
+<TabItem value="twig" label="Twig">
+
+```twig
+{{ entry.checkboxes_field.parameters({markup: 'ul'}) }}
+```
+
+</TabItem>
+<TabItem value="blade" label="Blade">
+
+```php
+{{ $entry->checkboxes_field->parameters(['markup' => 'ul']) }}
+```
+
+</TabItem>
+</Tabs>
+
+:::info
+See the ExpressionEngine Documentation for more information on the [Checkboxes fieldtype](https://docs.expressionengine.com/latest/fieldtypes/checkboxes.html)
+:::

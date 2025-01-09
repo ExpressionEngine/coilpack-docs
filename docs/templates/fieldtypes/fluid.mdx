@@ -1,21 +1,21 @@
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
-
 # Fluid
 
 A Fluid field is a collection of fields. A Fluid field can contain any native fieldtype except another Fluid field. The fields assigned to the Fluid field can then be used multiple times in the same entry when creating/editing the entry. The author also has control over the order of the fields.
 
-## Template Usage
+:::note
+The following examples use a field named `fluid_field`. This should be replaced with your field name.
+:::
 
-When iterating over the rows of a Fluid field in a template you will have access to the value but also extra data which can be used to control the display of these fields and field groups.
+## Template Variables
+
+When iterating over the rows of a Fluid field in a template you will have access to each field but also extra variables which can be used to control the display of these fields and field groups. It is important to remember that each `row` behaves as a field of it's own.  So the variables, parameters, and modifiers available on the `row` will depend on the fieldtype being used.
 
 <Tabs>
 <TabItem value="twig" label="Twig">
 
 ```twig
-{% for row in entry.fluid %}
-    Value: {{ row }}
+{% for row in entry.fluid_field %}
+    Field Value: {{ row }}
 
     Field Type: {{ row._field_type }} or {{ row.field.field_type }}
     Field Name: {{ row._field_name }} or {{ row.field.field_name }}
@@ -34,8 +34,8 @@ When iterating over the rows of a Fluid field in a template you will have access
 <TabItem value="blade" label="Blade">
 
 ```php
-@foreach($entry->fluid as $row)
-    Value: {{ $row }}
+@foreach($entry->fluid_field as $row)
+    Field Value: {{ $row }}
 
     Field Type: {{ $row->_field_type }} or {{ $row->field.field_type }}
     Field Name: {{ $row->_field_name }} or {{ $row->field.field_name }}
@@ -53,17 +53,17 @@ When iterating over the rows of a Fluid field in a template you will have access
 </TabItem>
 </Tabs>
 
-
-
 ## Field Groups
 
 ExpressionEngine 7.3 introduced the ability to use field groups within a Fluid field to further improve the content authoring experience.  Coilpack makes the Field Group's `short_name` available as the `_field_name` attribute and sets the `_field_type` attribute to a value of `field_group`.  We recommend using these attributes to conditionally handle the display of your fields and field groups.
+
+The following example assumes the Fluid Field has a Field Group named `my_group` which contains a [Text](./text.mdx) field `my_text`, a [File](./file.mdx) field `my_image` and a [Grid](./grid.mdx) field `my_grid`.
 
 <Tabs>
 <TabItem value="twig" label="Twig">
 
 ```twig
-{% for row in entry.fluid %}
+{% for row in entry.fluid_field %}
     {% if row._field_name == 'my_group' %}
         {% for group_row in row.fields %}
             {% if group_row._field_name == 'my_text' %}
@@ -93,7 +93,7 @@ ExpressionEngine 7.3 introduced the ability to use field groups within a Fluid f
 <TabItem value="blade" label="Blade">
 
 ```php
-@foreach($entry->fluid as $row)
+@foreach($entry->fluid_field as $row)
     @if($row->_field_name == 'my_group')
         @foreach($row->fields as $group_row)
             @if($group_row->_field_name == 'my_text')

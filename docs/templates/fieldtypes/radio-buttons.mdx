@@ -1,0 +1,45 @@
+# Radio Buttons
+
+Radio Buttons allow users to choose a single item from a list of options.
+
+:::note
+The following examples use a field named `radio_field`. This should be replaced with your field name.
+:::
+
+<Tabs groupId="template-language">
+<TabItem value="twig" label="Twig">
+
+```twig
+{{ entry.radio_field }}
+
+{% for value, label in entry.radio_field.options %}
+    {{ label }} - {{ value }}
+{% endfor %}
+
+{% for value, label in entry.radio_field.selected %}
+    {{ label }} - {{ value }}
+{% endfor %}
+```
+
+</TabItem>
+<TabItem value="blade" label="Blade">
+
+```php
+{{ $entry->radio_field }}
+
+@foreach($entry->radio_field->options as $value => $label)
+    {{ $label }} - {{ $value }}
+@endforeach
+
+@foreach($entry->radio_field->selected as $value => $label)
+    {{ $label }} - {{ $value }}
+@endforeach
+```
+
+</TabItem>
+</Tabs>
+
+
+:::info
+See the ExpressionEngine Documentation for more information on the [Radio Buttons fieldtype](https://docs.expressionengine.com/latest/fieldtypes/radio-buttons.html)
+:::

@@ -1,0 +1,52 @@
+# Colorpicker
+
+The color picker lets you select pre-defined or custom colors.
+
+:::note
+The following examples use a field named `colorpicker_field`. This should be replaced with your field name.
+:::
+
+<Tabs groupId="template-language">
+<TabItem value="twig" label="Twig">
+
+```twig
+<div style="background-color: {{ entry.colorpicker_field }}"></div>
+```
+
+</TabItem>
+<TabItem value="blade" label="Blade">
+
+```php
+<div style="background-color: {{ $entry->colorpicker_field }}"></div>
+```
+
+</TabItem>
+</Tabs>
+
+## Modifiers
+
+### Contrast Color
+
+Use the contrast_color modifier to output a black or white color that contrasts with the selected color
+
+<Tabs groupId="template-language">
+<TabItem value="twig" label="Twig">
+
+```twig
+{{ entry.colorpicker_field.contrast_color() }}
+```
+
+</TabItem>
+<TabItem value="blade" label="Blade">
+
+```php
+{{ $entry->colorpicker_field->contrast_color() }}
+```
+
+</TabItem>
+</Tabs>
+
+
+:::info
+See the ExpressionEngine Documentation for more information on the [Colorpicker fieldtype](https://docs.expressionengine.com/latest/fieldtypes/colorpicker.html)
+:::
