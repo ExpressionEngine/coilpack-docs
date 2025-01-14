@@ -4,8 +4,15 @@
 
 # Coilpack Documentation
 
-This is the documentation for [Coilpack by ExpressionEngine](https://github.com/ExpressionEngine/Coilpack) built
-using [Docusaurus](https://docusaurus.io/).
+This is the documentation for [Coilpack by ExpressionEngine](https://github.com/ExpressionEngine/Coilpack).
+
+## About Coilpack
+
+Coilpack is a package that lets you harness the powerful Laravel ecosystem to bring your ExpressionEngine content forward in exciting new ways. Once installed in a standard Laravel application Coilpack loads ExpressionEngine and integrates many core services.
+
+## Getting Started
+
+This documentation is built using [Docusaurus](https://docusaurus.io/).
 
 ### Installation
 
