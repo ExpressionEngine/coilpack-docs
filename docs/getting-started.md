@@ -80,7 +80,7 @@ Inside of your Laravel project, you will need to update your project to use the 
 ```sh
 cd project-name
 
-composer require expressionengine/coilpack:1.x
+composer require expressionengine/coilpack:2.x
 ```
 
 ### Run Coilpack Setup
