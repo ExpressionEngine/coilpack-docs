@@ -6,6 +6,12 @@ GraphQL is a query language for APIs and can provide some nice benefits over a t
 
 Coilpack ships with the GraphQL integration disabled by default.  If you would like to use GraphQL you can add `COILPACK_GRAPHQL_ENABLED=true` to your Laravel `.env` file
 
+## Enabling Developer Tools
+
+You can interact with your site's GraphQL endpoints by using the built-in GraphiQL tool at `/graphiql` in the ExpressionEngine control panel.  Once GraphQL is enabled this endpoint can be made available by adding `COILPACK_GRAPHIQL_ENABLED=true` to your Laravel `.env` file.
+
+Alternatively we recommend using [GraphQL Playground](https://github.com/graphql/graphql-playground) or [Insomnia](https://insomnia.rest/) to test your queries.
+
 ## Securing your GraphQL Endpoint
 
 It is recommended that you secure your GraphQL endpoint in a production environment so authentication is required by default.  You can use the command `php artisan coilpack:graphql --generate-token` to create a token and save it to your `.env` file.  This token should be sent as an authorization header with any requests to the `/graphql` endpoint like this `Authorization: Bearer {COILPACK_GRAPHQL_TOKEN}`.
@@ -65,12 +71,6 @@ The GraphQL integration's behavior can be configured in the `config/coilpack.php
     ],
 ...
 ```
-
-## Tools
-
-You can interact with your site's GraphQL endpoints by using the built-in GraphiQL tool at `/graphiql`.  Once GraphQL is enabled this endpoint can be made available by adding `COILPACK_GRAPHIQL_ENABLED=true` to your Laravel `.env` file.
-
-Alternatively we recommend using [GraphQL Playground](https://github.com/graphql/graphql-playground) or [Insomnia](https://insomnia.rest/) to test your queries.
 
 ## Add-on Developers
 
