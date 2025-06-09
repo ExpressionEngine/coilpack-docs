@@ -39,7 +39,7 @@ For full documentation of available parameters please see the [ExpressionEngine 
 
 ```twig
 {% set form = exp.email.contact_form({
-    user_recipients: 'no',
+    user_recipients: false,
     recipients: 'admin@example.com',
     charset: 'utf-8'
 }) %}
@@ -73,7 +73,7 @@ For full documentation of available parameters please see the [ExpressionEngine 
 ```php
 @php
 $form = $exp->email->contact_form({
-    user_recipients: 'no',
+    user_recipients: false,
     recipients: 'admin@example.com',
     charset: 'utf-8'
 })
