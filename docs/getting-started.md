@@ -23,6 +23,7 @@ We recommend using the latest version of Laravel whenever possible.  The only re
 
 | PHP     | Laravel | Coilpack |
 | ------- | ------- | -------- |
+| 8.2.0+  | 12.x    | 2.x      |
 | 8.2.0+  | 11.x    | 2.x      |
 | 8.1.0+  | 10.x    | 2.x, 1.x |
 | 8.0.2+  | 9.x     | 2.x, 1.x |
